@@ -1,0 +1,262 @@
+.logo-carousel{
+
+    position:relative;
+
+}
+
+
+.logo-heading{
+
+    text-align:center;
+
+    margin-bottom:var(--space-6);
+
+    color:var(--color-text-muted);
+
+    letter-spacing:.08em;
+
+    text-transform:uppercase;
+
+    font-size:var(--text-sm);
+
+}
+
+
+
+/* wrapper */
+
+.logo-mask{
+
+    position:relative;
+
+    overflow:hidden;
+
+    border-radius:999px;
+
+    padding:
+
+        18px 0;
+
+}
+
+
+/* fade edges */
+
+.logo-mask::before,
+
+.logo-mask::after{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+
+    width:120px;
+
+    height:100%;
+
+    z-index:2;
+
+    pointer-events:none;
+
+}
+
+
+.logo-mask::before{
+
+    left:0;
+
+    background:
+
+    linear-gradient(
+
+        to right,
+
+        var(--color-bg),
+
+        transparent
+
+    );
+
+}
+
+
+.logo-mask::after{
+
+    right:0;
+
+    background:
+
+    linear-gradient(
+
+        to left,
+
+        var(--color-bg),
+
+        transparent
+
+    );
+
+}
+
+
+
+/* moving row */
+
+.logo-track{
+
+    display:flex;
+
+    align-items:center;
+
+    width:max-content;
+
+    animation:
+
+        marquee
+
+        24s
+
+        linear
+
+        infinite;
+
+}
+
+
+
+.logo-carousel:hover
+
+.logo-track{
+
+    animation-play-state:paused;
+
+}
+
+
+
+/* every logo */
+
+.logo-item{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    flex-shrink:0;
+
+    width:170px;
+
+    height:54px;
+
+    margin-inline:12px;
+
+}
+
+
+
+.logo-item img{
+
+    max-width:110px;
+
+    max-height:36px;
+
+    width:auto;
+
+    height:auto;
+
+    object-fit:contain;
+
+    opacity:.75;
+
+    transition:
+
+        opacity .3s,
+
+        transform .3s;
+
+}
+
+
+.logo-item:hover img{
+
+    opacity:1;
+
+    transform:scale(1.08);
+
+}
+
+
+
+/* infinite */
+
+@keyframes marquee{
+
+    from{
+
+        transform:translateX(0);
+
+    }
+
+    to{
+
+        transform:translateX(-50%);
+
+    }
+
+}
+
+
+
+/* tablet */
+
+@media(max-width:900px){
+
+.logo-item{
+
+    width:140px;
+
+}
+
+.logo-item img{
+
+    max-width:90px;
+
+}
+
+}
+
+
+
+/* mobile */
+
+@media(max-width:600px){
+
+.logo-item{
+
+    width:110px;
+
+    margin-inline:8px;
+
+}
+
+.logo-item img{
+
+    max-width:72px;
+
+    max-height:28px;
+
+}
+
+.logo-mask::before,
+
+.logo-mask::after{
+
+    width:60px;
+
+}
+
+}

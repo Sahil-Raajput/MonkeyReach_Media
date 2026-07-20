@@ -1,0 +1,145 @@
+---
+import "../styles/process.css";
+
+const steps = [
+
+    {
+        number:"01",
+        title:"Discover",
+        text:"We analyze your business, audience, competitors and identify growth opportunities.",
+        icon:"target"
+    },
+
+    {
+        number:"02",
+        title:"Execute",
+        text:"We build campaigns, content and strategies focused on measurable results.",
+        icon:"rocket"
+    },
+
+    {
+        number:"03",
+        title:"Scale",
+        text:"We optimize performance and scale the channels that generate growth.",
+        icon:"chart"
+    }
+
+];
+
+---
+
+<section class="process">
+
+    <div class="container">
+
+        <div class="process-header">
+
+            <p>
+                How We Work
+            </p>
+
+            <h2>
+                A proven process for
+                <span>digital growth</span>
+            </h2>
+
+        </div>
+
+
+        <div class="process-grid">
+
+
+        {steps.map((step)=>(
+
+
+            <article class="process-card glass">
+
+
+                <div class="process-top">
+
+                    <span class="step-number">
+                        {step.number}
+                    </span>
+
+
+                    <div class="process-icon">
+
+
+                    {step.icon === "target" && (
+
+                    <svg viewBox="0 0 24 24">
+
+                        <circle cx="12" cy="12" r="8"/>
+                        <circle cx="12" cy="12" r="4"/>
+                        <circle cx="12" cy="12" r="1"/>
+
+                    </svg>
+
+                    )}
+
+
+                    {step.icon === "rocket" && (
+
+                    <svg viewBox="0 0 24 24">
+
+                        <path d="
+                        M12 2
+                        C8 6 7 11 8 15
+                        L12 18
+                        L16 15
+                        C17 11 16 6 12 2
+                        Z"/>
+
+                        <circle cx="12" cy="10" r="2"/>
+
+                    </svg>
+
+                    )}
+
+
+                    {step.icon === "chart" && (
+
+                    <svg viewBox="0 0 24 24">
+
+                        <polyline points="
+                        4 16
+                        9 11
+                        13 14
+                        20 6"/>
+
+                        <polyline points="
+                        15 6
+                        20 6
+                        20 11"/>
+
+                    </svg>
+
+                    )}
+
+
+                    </div>
+
+                </div>
+
+
+                <h3>
+                    {step.title}
+                </h3>
+
+
+                <p>
+                    {step.text}
+                </p>
+
+
+            </article>
+
+
+        ))}
+
+
+        </div>
+
+    </div>
+
+</section>

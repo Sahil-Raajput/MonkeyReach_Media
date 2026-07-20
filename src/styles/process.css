@@ -1,0 +1,265 @@
+.process{
+
+    position:relative;
+
+}
+
+
+.process-header{
+
+    text-align:center;
+
+    max-width:650px;
+
+    margin-inline:auto;
+
+    margin-bottom:var(--space-9);
+
+}
+
+
+.process-header p{
+
+    color:var(--color-primary);
+
+    font-size:var(--text-sm);
+
+    text-transform:uppercase;
+
+    letter-spacing:.15em;
+
+}
+
+
+.process-header h2{
+
+    margin-top:var(--space-4);
+
+    font-size:var(--text-3xl);
+
+}
+
+
+.process-header span{
+
+    color:var(--color-primary);
+
+}
+
+
+
+/* =====================
+   GRID
+===================== */
+
+
+.process-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:var(--space-6);
+
+    position:relative;
+
+}
+
+
+
+/* connecting line */
+
+
+.process-grid::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:65px;
+
+    left:16%;
+
+    right:16%;
+
+    height:1px;
+
+    background:var(--color-border);
+
+    z-index:-1;
+
+}
+
+
+
+/* =====================
+   CARD
+===================== */
+
+
+.process-card{
+
+    padding:var(--space-7);
+
+    border-radius:var(--radius-xl);
+
+    transition:
+
+        transform var(--transition-normal),
+
+        border var(--transition-normal);
+
+}
+
+
+.process-card:hover{
+
+    transform:translateY(-8px);
+
+    border-color:
+
+        rgba(255,77,0,.35);
+
+}
+
+
+
+/* =====================
+   TOP
+===================== */
+
+
+.process-top{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    margin-bottom:var(--space-6);
+
+}
+
+
+.step-number{
+
+    font-size:var(--text-sm);
+
+    color:var(--color-primary);
+
+    font-weight:700;
+
+}
+
+
+
+/* =====================
+   ICON
+===================== */
+
+
+.process-icon{
+
+    width:64px;
+
+    height:64px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:var(--radius-md);
+
+    background:rgba(255,255,255,.04);
+
+}
+
+
+.process-icon svg{
+
+    width:34px;
+
+    height:34px;
+
+    fill:none;
+
+    stroke:var(--color-primary);
+
+    stroke-width:1.8;
+
+    stroke-linecap:round;
+
+    stroke-linejoin:round;
+
+    transition:transform var(--transition-normal);
+
+}
+
+
+.process-card:hover svg{
+
+    transform:
+
+        scale(1.15)
+        rotate(5deg);
+
+}
+
+
+
+/* =====================
+   TEXT
+===================== */
+
+
+.process-card h3{
+
+    font-size:var(--text-xl);
+
+    margin-bottom:var(--space-3);
+
+}
+
+
+.process-card p{
+
+    font-size:var(--text-base);
+
+}
+
+
+
+/* =====================
+   RESPONSIVE
+===================== */
+
+
+@media(max-width:900px){
+
+
+.process-grid{
+
+    grid-template-columns:1fr;
+
+}
+
+
+.process-grid::before{
+
+    display:none;
+
+}
+
+
+.process-card{
+
+    padding:var(--space-6);
+
+}
+
+
+}

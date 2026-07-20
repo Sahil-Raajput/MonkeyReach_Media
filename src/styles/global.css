@@ -1,0 +1,426 @@
+/* ==========================================================
+   RESET
+========================================================== */
+
+*,
+*::before,
+*::after{
+
+    margin:0;
+    padding:0;
+
+    box-sizing:border-box;
+
+}
+
+html{
+
+    scroll-behavior:smooth;
+
+}
+
+html,
+body{
+
+    min-height:100%;
+
+}
+
+body{
+
+    display:flex;
+    flex-direction:column;
+
+    min-height:100vh;
+
+    overflow-x:hidden;
+
+    font-family:var(--font-primary);
+
+    background:var(--color-bg);
+
+    color:var(--color-text);
+
+    line-height:1.6;
+
+    text-rendering:optimizeLegibility;
+
+    -webkit-font-smoothing:antialiased;
+
+}
+
+
+/* ==========================================================
+   DESIGN SYSTEM
+========================================================== */
+
+:root{
+
+    /* ---------------- COLORS ---------------- */
+
+    --color-bg:#050505;
+
+    --color-surface:#0b0b0b;
+
+    --color-surface-soft:#111111;
+
+    --color-primary:#ff4d00;
+
+    --color-primary-hover:#ff6a00;
+
+    --color-text:#ffffff;
+
+    --color-text-muted:#a1a1aa;
+
+    --color-border:rgba(255,255,255,.12);
+
+
+
+    /* ---------------- TYPOGRAPHY ---------------- */
+
+    --font-primary:"Inter",sans-serif;
+
+    --text-xs:.75rem;
+
+    --text-sm:.875rem;
+
+    --text-base:1rem;
+
+    --text-lg:1.125rem;
+
+    --text-xl:1.5rem;
+
+    --text-2xl:2rem;
+
+    --text-3xl:3rem;
+
+    --text-hero:clamp(3rem,3vw,3rem);
+
+
+
+    /* ---------------- SPACING ---------------- */
+
+    --space-1:4px;
+
+    --space-2:8px;
+
+    --space-3:12px;
+
+    --space-4:16px;
+
+    --space-5:24px;
+
+    --space-6:32px;
+
+    --space-7:48px;
+
+    --space-8:64px;
+
+    --space-9:96px;
+
+    --space-10:128px;
+
+
+
+    /* ---------------- RADIUS ---------------- */
+
+    --radius-sm:6px;
+
+    --radius-md:12px;
+
+    --radius-lg:20px;
+
+    --radius-xl:32px;
+
+    --radius-pill:999px;
+
+
+
+    /* ---------------- BORDER ---------------- */
+
+    --border-default:1px solid var(--color-border);
+
+
+
+    /* ---------------- SHADOWS ---------------- */
+
+    --shadow-soft:
+
+        0 10px 40px rgba(0,0,0,.25);
+
+    --shadow-glow:
+
+        0 0 40px rgba(255,77,0,.15);
+
+
+
+    /* ---------------- LAYOUT ---------------- */
+
+    --container-width:1200px;
+
+    --container-padding:clamp(1rem,4vw,1.5rem);
+
+    --section-padding:clamp(3rem,2vw,2rem);
+
+    --header-height:78px;
+
+
+
+    /* ---------------- MOTION ---------------- */
+
+    --transition-fast:150ms ease;
+
+    --transition-normal:300ms ease;
+
+}
+
+
+/* ==========================================================
+   TYPOGRAPHY
+========================================================== */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6{
+
+    font-weight:700;
+
+    line-height:1.15;
+
+    letter-spacing:-0.03em;
+
+}
+
+p{
+
+    color:var(--color-text-muted);
+
+}
+
+a{
+
+    color:inherit;
+
+    text-decoration:none;
+
+    transition:color var(--transition-fast);
+
+}
+
+strong{
+
+    color:var(--color-text);
+
+}
+
+
+/* ==========================================================
+   MEDIA
+========================================================== */
+
+img,
+picture,
+video,
+canvas,
+svg{
+
+    display:block;
+
+    max-width:100%;
+
+}
+
+img{
+
+    height:auto;
+
+}
+
+
+/* ==========================================================
+   FORMS
+========================================================== */
+
+button,
+input,
+textarea,
+select{
+
+    font:inherit;
+
+}
+
+button{
+
+    border:none;
+
+    background:none;
+
+    cursor:pointer;
+
+}
+
+
+/* ==========================================================
+   LISTS
+========================================================== */
+
+ul,
+ol{
+
+    list-style:none;
+
+}
+
+
+/* ==========================================================
+   LAYOUT
+========================================================== */
+
+main{
+
+    flex:1;
+
+    width:100%;
+
+    min-width:0;
+
+}
+
+section{
+
+    padding-block:var(--section-padding);
+
+}
+
+.container{
+
+    width:min(
+
+        calc(100% - (var(--container-padding) * 2)),
+
+        var(--container-width)
+
+    );
+
+    margin-inline:auto;
+
+}
+
+
+/* ==========================================================
+   REUSABLE UTILITIES
+========================================================== */
+
+.grid{
+
+    display:grid;
+
+}
+
+.flex{
+
+    display:flex;
+
+}
+
+.center{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+}
+
+.surface{
+
+    background:var(--color-surface);
+
+    border:var(--border-default);
+
+    border-radius:var(--radius-lg);
+
+}
+
+.text-center{
+
+    text-align:center;
+
+}
+
+.text-muted{
+
+    color:var(--color-text-muted);
+
+}
+
+
+/* ==========================================================
+   GLOBAL SELECTION
+========================================================== */
+
+::selection{
+
+    background:var(--color-primary);
+
+    color:#fff;
+
+}
+
+
+/* ==========================================================
+   SCROLLBAR
+========================================================== */
+
+::-webkit-scrollbar{
+
+    width:10px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:var(--color-bg);
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:var(--color-surface-soft);
+
+    border-radius:999px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+    background:var(--color-primary);
+
+}
+
+.sr-only{
+
+    position:absolute;
+
+    width:1px;
+
+    height:1px;
+
+    padding:0;
+
+    margin:-1px;
+
+    overflow:hidden;
+
+    clip:rect(0,0,0,0);
+
+    white-space:nowrap;
+
+    border:0;
+
+}

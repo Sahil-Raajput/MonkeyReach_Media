@@ -1,0 +1,35 @@
+---
+import "../styles/logo-carousel.css";
+
+const logos = [
+    { src: "/logos/google-tag-manager.png", name: "Google Tag Manager" },
+    { src: "/logos/google-trends-logo.png", name: "Google Trends" },
+    { src: "/logos/google-ads.png", name: "Google Ads" },
+    { src: "/logos/Google-Analytics-Logo.png", name: "Google Analytics" },
+    { src: "/logos/google-my-business-logo.png", name: "Google Business" },
+    { src: "/logos/meta-logo.png", name: "Meta Ads" },
+];
+---
+
+<section class="logo-carousel">
+    <div class="container">
+        <p class="logo-heading">Top Platforms for Growing Businesses</p>
+
+        <div class="logo-mask">
+            <div class="logo-track">
+                {
+                    [...logos, ...logos].map((logo) => (
+                        <div class="logo-item">
+                            <img
+                                src={logo.src}
+                                alt={logo.name}
+                                loading="lazy"
+                                draggable="false"
+                            />
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </div>
+</section>

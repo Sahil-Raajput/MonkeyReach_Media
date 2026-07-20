@@ -1,0 +1,212 @@
+---
+import "../styles/our-solution.css";
+
+const solutions = [
+
+    {
+        title: "Get Found by More Customers",
+        description: "Appear where your ideal customers are already searching and scrolling.",
+        icon: "target",
+        tags: [
+            { name: "SEO", href: "/services/seo" },
+            { name: "Google Business", href: "/services/google-business" },
+            { name: "Instagram", href: "/services/instagram-marketing" },
+            { name: "Facebook", href: "/services/facebook-marketing" },
+            { name: "Video Content", href: "/services/video-editing" }
+        ]
+    },
+
+    {
+        title: "Generate More Leads",
+        description: "Turn visitors into enquiries, phone calls and qualified opportunities.",
+        icon: "megaphone",
+        tags: [
+            { name: "Google Ads", href: "/services/google-ads" },
+            { name: "Meta Ads", href: "/services/meta-ads" },
+            { name: "Landing Pages", href: "/services/landing-pages" },
+            { name: "Email Marketing", href: "/services/email-marketing" }
+        ]
+    },
+
+    {
+        title: "Increase Sales",
+        description: "Improve every stage of your customer journey to convert more visitors into paying customers.",
+        icon: "chart",
+        tags: [
+            { name: "Website", href: "/services/web-design" },
+            { name: "Conversion Optimization", href: "/services/conversion-optimization" },
+            { name: "Remarketing", href: "/services/remarketing" }
+        ]
+    },
+
+    {
+        title: "Save Time with Automation",
+        description: "Reduce repetitive work with automated conversations and customer follow-ups.",
+        icon: "automation",
+        tags: [
+            { name: "WhatsApp Automation", href: "/services/whatsapp-automation" },
+            { name: "Email Automation", href: "/services/email-marketing" }
+        ]
+    },
+
+    {
+        title: "Grow Without Guesswork",
+        description: "Track performance, measure ROI and make smarter marketing decisions.",
+        icon: "analytics",
+        tags: [
+            { name: "Analytics", href: "/services/analytics" },
+            { name: "Reporting", href: "/services/reporting" },
+            { name: "Campaign Optimization", href: "/services/campaign-optimization" }
+        ]
+    },
+
+    {
+        title: "Build Long-Term Growth",
+        description: "Create a sustainable marketing engine that keeps generating customers month after month.",
+        icon: "growth",
+        tags: [
+            { name: "SEO", href: "/services/seo" },
+            { name: "Content", href: "/services/content-marketing" },
+            { name: "Paid Ads", href: "/services/google-ads" },
+            { name: "Social Media", href: "/services/social-media-management" }
+        ]
+    }
+
+];
+---
+
+<section class="our-solution">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <span class="section-label">
+                Our Solutions
+            </span>
+
+            <h2>
+                Helping Your Business Grow Through Measurable Outcomes
+            </h2>
+
+            <p>
+                We don't just deliver marketing services—we solve business challenges with strategies focused on growth.
+            </p>
+
+        </div>
+
+        <div class="solution-grid">
+
+            {solutions.map((solution) => (
+
+                <article class="solution-card">
+
+                    <div class="solution-header">
+
+                        <div class="solution-icon">
+
+                            {solution.icon === "target" && (
+
+                                <svg viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="8"/>
+                                    <circle cx="12" cy="12" r="4"/>
+                                    <circle cx="12" cy="12" r="1"/>
+                                </svg>
+
+                            )}
+
+                            {solution.icon === "megaphone" && (
+
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M3 11 L15 6 V18 L3 13 Z"/>
+                                    <line x1="15" y1="8" x2="19" y2="6"/>
+                                    <line x1="15" y1="16" x2="19" y2="18"/>
+                                </svg>
+
+                            )}
+
+                            {solution.icon === "chart" && (
+
+                                <svg viewBox="0 0 24 24">
+                                    <polyline points="4 16 9 11 13 14 20 6"/>
+                                    <polyline points="15 6 20 6 20 11"/>
+                                </svg>
+
+                            )}
+
+                            {solution.icon === "automation" && (
+
+                                <svg viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="3"/>
+                                    <path d="M12 2V5M12 19V22M2 12H5M19 12H22M5 5L7 7M17 17L19 19M19 5L17 7M5 19L7 17"/>
+                                </svg>
+
+                            )}
+
+                            {solution.icon === "analytics" && (
+
+                                <svg viewBox="0 0 24 24">
+                                    <rect x="4" y="11" width="3" height="8"/>
+                                    <rect x="10" y="7" width="3" height="12"/>
+                                    <rect x="16" y="4" width="3" height="15"/>
+                                </svg>
+
+                            )}
+
+                            {solution.icon === "growth" && (
+
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M12 20V8"/>
+                                    <path d="M12 8L7 13"/>
+                                    <path d="M12 8L17 13"/>
+                                    <path d="M6 20H18"/>
+                                </svg>
+
+                            )}
+
+                        </div>
+
+                        <h3>
+                            {solution.title}
+                        </h3>
+
+                    </div>
+
+                    <p>
+                        {solution.description}
+                    </p>
+
+                    <div class="solution-tags">
+
+                        {solution.tags.map((tag) => (
+
+                            <a
+                                href={tag.href}
+                                class="tag"
+                            >
+                                {tag.name}
+                            </a>
+
+                        ))}
+
+                    </div>
+
+                </article>
+
+            ))}
+
+        </div>
+
+    </div>
+
+</section>
+
+<div class="solution-footer">
+
+    <p>
+        We focus on visibility, leads, sales and long-term growth—not vanity metrics.
+    </p>
+    <br>
+    <hr>
+
+</div>

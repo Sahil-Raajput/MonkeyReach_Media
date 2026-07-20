@@ -1,0 +1,406 @@
+/* ==========================================================
+   TRUST CTA
+========================================================== */
+
+.trust-cta{
+
+    position:relative;
+
+}
+
+.trust-card{
+
+    position:relative;
+
+    overflow:hidden;
+
+    text-align:center;
+
+    padding:clamp(1.75rem,4vw,2.75rem);
+
+    border-radius:24px;
+
+    background:
+    linear-gradient(
+        180deg,
+        rgba(255,255,255,.08),
+        rgba(255,255,255,.03)
+    );
+
+    backdrop-filter:blur(20px);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    box-shadow:
+        0 16px 40px rgba(0,0,0,.25);
+
+}
+
+
+
+/* ==========================================================
+   TRUST POINTS
+========================================================== */
+
+.trust-points{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    flex-wrap:wrap;
+
+    gap:12px;
+
+    margin-bottom:22px;
+
+    color:var(--color-text-muted);
+
+    font-size:.9rem;
+
+    line-height:1.6;
+
+}
+
+.trust-points strong{
+
+    color:#FFD166;
+
+    font-weight:700;
+
+}
+
+
+
+/* ==========================================================
+   TRUST LOGOS
+========================================================== */
+
+.trust-logos{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    flex-wrap:wrap;
+
+    gap:14px;
+
+    margin-bottom:28px;
+
+}
+
+.trust-logo{
+
+    width:58px;
+
+    height:58px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:8px;
+
+    flex-shrink:0;
+
+    background:
+    linear-gradient(
+        180deg,
+        #ffffff,
+        #f7f7f7
+    );
+
+    border-radius:14px;
+
+    border:1px solid rgba(0,0,0,.05);
+
+    box-shadow:
+        0 6px 18px rgba(0,0,0,.14);
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease;
+
+}
+
+.trust-logo:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:
+        0 10px 22px rgba(0,0,0,.18);
+
+}
+
+.trust-logo img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:contain;
+
+    object-position:center;
+
+}
+
+
+
+/* ==========================================================
+   CTA CONTENT
+========================================================== */
+
+.trust-card h2{
+
+    margin-bottom:12px;
+
+    font-size:clamp(1.9rem,4vw,2.7rem);
+
+    line-height:1.1;
+
+}
+
+.trust-card p{
+
+    max-width:600px;
+
+    margin:0 auto 24px;
+
+}
+
+
+
+/* ==========================================================
+   CTA BUTTON
+========================================================== */
+
+.cta-button{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:14px 28px;
+
+    border-radius:999px;
+
+    background:var(--color-primary);
+
+    color:#fff;
+
+    font-weight:600;
+
+    transition:
+        transform .2s,
+        background .2s,
+        box-shadow .2s;
+
+}
+
+.cta-button:hover{
+
+    background:var(--color-primary-hover);
+
+    transform:translateY(-2px);
+
+    box-shadow:
+        0 8px 22px rgba(255,77,0,.30);
+
+}
+
+
+
+/* ==========================================================
+   SEO CONTENT
+========================================================== */
+
+.seo-content{
+
+    margin-top:var(--space-3);
+
+    padding:
+
+        var(--space-4)
+
+        0
+
+        var(--space-5);
+
+    border-top:var(--border-default);
+
+}
+
+.seo-content .container{
+
+    width:min(97%,1400px);
+
+}
+
+.seo-content p{
+
+    margin:0 0 14px;
+
+    color:var(--color-text-muted);
+
+    font-size:.9rem;
+
+    line-height:1.85;
+
+    opacity:.72;
+
+    text-wrap:pretty;
+
+}
+
+
+
+/* ==========================================================
+   TABLET
+========================================================== */
+
+@media (max-width:768px){
+
+.trust-card{
+
+    padding:2rem 1.5rem;
+
+}
+
+.trust-points{
+
+    gap:8px;
+
+    font-size:.82rem;
+
+}
+
+.trust-logos{
+
+    gap:12px;
+
+    margin-bottom:22px;
+
+}
+
+.trust-logo{
+
+    width:52px;
+
+    height:52px;
+
+    padding:7px;
+
+    border-radius:12px;
+
+}
+
+.trust-card h2{
+
+    font-size:2rem;
+
+}
+
+.trust-card p{
+
+    margin-bottom:20px;
+
+}
+
+.seo-content{
+
+    padding:
+
+        var(--space-4)
+
+        0;
+
+}
+
+.seo-content p{
+
+    font-size:.88rem;
+
+}
+
+}
+
+
+
+/* ==========================================================
+   MOBILE
+========================================================== */
+
+@media (max-width:480px){
+
+.trust-card{
+
+    padding:1.75rem 1.2rem;
+
+    border-radius:20px;
+
+}
+
+.trust-points{
+
+    flex-direction:column;
+
+    gap:6px;
+
+}
+
+.trust-points span:nth-child(even){
+
+    display:none;
+
+}
+
+.trust-logos{
+
+    gap:10px;
+
+    margin-bottom:20px;
+
+}
+
+.trust-logo{
+
+    width:46px;
+
+    height:46px;
+
+    padding:6px;
+
+    border-radius:10px;
+
+}
+
+.trust-card h2{
+
+    font-size:1.7rem;
+
+}
+
+.trust-card p{
+
+    font-size:.95rem;
+
+}
+
+.cta-button{
+
+    width:100%;
+
+    padding:14px 20px;
+
+}
+
+}
