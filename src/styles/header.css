@@ -14,9 +14,11 @@
 
 }
 
+
 /* ===========================
    Header Layout
 =========================== */
+
 
 .header-inner{
 
@@ -28,39 +30,61 @@
 
     min-height:var(--header-height);
 
-    gap:var(--space-6);
+    gap:clamp(1rem,3vw,3rem);
 
 }
+
+
+
+
 
 /* ===========================
    Logo
 =========================== */
 
+
 .logo{
 
-    display:inline-flex;
+    display:flex;
 
     align-items:center;
 
     flex-shrink:0;
 
-    font-size:1.6rem;
+}
 
-    font-weight:800;
 
-    color:var(--color-text);
+
+.logo img{
+
+    display:block;
+
+    width:clamp(90px,10vw,100px);
+
+    height:auto;
+
+    transition:
+        transform var(--transition-fast),
+        opacity var(--transition-fast);
 
 }
 
-.logo span{
 
-    color:var(--color-primary);
+
+.logo:hover img{
+
+    transform:scale(1.03);
 
 }
+
+
+
+
 
 /* ===========================
    Navigation
 =========================== */
+
 
 .nav{
 
@@ -70,21 +94,53 @@
 
     justify-content:center;
 
-    gap:var(--space-6);
+    gap:clamp(1rem,2vw,2.5rem);
 
     margin-inline:auto;
 
 }
 
+
+
 .nav a{
+
+    position:relative;
 
     color:var(--color-text-muted);
 
     font-size:var(--text-sm);
 
+    font-weight:500;
+
+    padding:.4rem 0;
+
     transition:color var(--transition-fast);
 
 }
+
+
+
+.nav a::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    bottom:-4px;
+
+    width:0;
+
+    height:2px;
+
+    background:var(--color-primary);
+
+    transition:width .25s ease;
+
+}
+
+
 
 .nav a:hover{
 
@@ -92,9 +148,22 @@
 
 }
 
+
+
+.nav a:hover::after{
+
+    width:100%;
+
+}
+
+
+
+
+
 /* ===========================
    Actions
 =========================== */
+
 
 .header-actions{
 
@@ -107,6 +176,17 @@
     flex-shrink:0;
 
 }
+
+
+
+.login-btn,
+.cta-btn{
+
+    white-space:nowrap;
+
+}
+
+
 
 .login-btn{
 
@@ -123,18 +203,20 @@
     color:var(--color-text);
 
     transition:
-
         background var(--transition-fast),
-
         color var(--transition-fast);
 
 }
+
+
 
 .login-btn:hover{
 
     background:rgba(255,255,255,.06);
 
 }
+
+
 
 .cta-btn{
 
@@ -154,13 +236,17 @@
 
     font-weight:600;
 
+    box-shadow:
+        0 8px 24px rgba(255,77,0,.25);
+
     transition:
-
         background var(--transition-fast),
-
-        transform var(--transition-fast);
+        transform var(--transition-fast),
+        box-shadow var(--transition-fast);
 
 }
+
+
 
 .cta-btn:hover{
 
@@ -168,11 +254,19 @@
 
     transform:translateY(-2px);
 
+    box-shadow:
+        0 12px 28px rgba(255,77,0,.35);
+
 }
+
+
+
+
 
 /* ===========================
    Mobile Menu Button
 =========================== */
+
 
 .menu-btn{
 
@@ -180,7 +274,15 @@
 
     padding:var(--space-2);
 
+    background:none;
+
+    border:none;
+
+    cursor:pointer;
+
 }
+
+
 
 .menu-btn span{
 
@@ -198,11 +300,25 @@
 
 }
 
+
+
+
+
 /* ===========================
    Tablet
 =========================== */
 
+
 @media (max-width:900px){
+
+
+    .logo img{
+
+        width:170px;
+
+    }
+
+
 
     .nav{
 
@@ -222,13 +338,19 @@
 
         padding:var(--space-6);
 
-        background:var(--color-surface);
+        background:rgba(8,8,8,.98);
+
+        backdrop-filter:blur(18px);
 
         border-bottom:var(--border-default);
 
         margin:0;
 
+        gap:var(--space-5);
+
     }
+
+
 
     .nav.active{
 
@@ -236,11 +358,27 @@
 
     }
 
+
+
+    .nav a{
+
+        width:100%;
+
+        padding:.25rem 0;
+
+        font-size:var(--text-base);
+
+    }
+
+
+
     .menu-btn{
 
         display:block;
 
     }
+
+
 
     .cta-btn{
 
@@ -248,13 +386,20 @@
 
     }
 
+
 }
+
+
+
+
 
 /* ===========================
    Mobile
 =========================== */
 
+
 @media (max-width:576px){
+
 
     .header-inner{
 
@@ -262,16 +407,29 @@
 
     }
 
-    .logo{
 
-        font-size:1.35rem;
+
+    .logo img{
+
+        width:145px;
 
     }
+
+
 
     .login-btn{
 
         display:none;
 
     }
+
+
+
+    .menu-btn{
+
+        padding:6px;
+
+    }
+
 
 }

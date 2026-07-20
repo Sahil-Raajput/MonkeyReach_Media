@@ -1,31 +1,61 @@
 .footer{
 
-    background:var(--color-bg);
+    background:
+    linear-gradient(
+        180deg,
+        rgba(255,255,255,.03),
+        transparent
+    ),
+    var(--color-bg);
 
     border-top:var(--border-default);
 
-    padding-block:var(--space-6);
+    padding-block:var(--space-8);
 
 }
+
+
+/* ===========================
+   MAIN CONTAINER
+=========================== */
+
 
 .footer-content{
 
-    display:grid;
+    display:flex;
 
-    grid-template-columns:
-        auto
-        1fr
-        auto;
+    flex-direction:column;
 
     align-items:center;
 
-    gap:var(--space-6);
+    gap:var(--space-7);
+
+    text-align:center;
 
 }
 
+
+
+
+
 /* ===========================
-   Logo
+   BRAND
 =========================== */
+
+
+.footer-brand{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    gap:var(--space-4);
+
+}
+
+
 
 .footer-logo{
 
@@ -33,23 +63,45 @@
 
     align-items:center;
 
-    font-size:1.35rem;
-
-    font-weight:700;
-
-    white-space:nowrap;
+    justify-content:center;
 
 }
 
-.footer-logo span{
 
-    color:var(--color-primary);
+
+.footer-logo img{
+
+    width:170px;
+
+    height:auto;
+
+    filter:
+    drop-shadow(0 10px 25px rgba(0,0,0,.35));
 
 }
+
+
+
+.footer-description{
+
+    max-width:550px;
+
+    color:var(--color-text-muted);
+
+    font-size:var(--text-base);
+
+    line-height:1.8;
+
+}
+
+
+
+
 
 /* ===========================
-   Navigation
+   NAVIGATION
 =========================== */
+
 
 .footer-nav{
 
@@ -59,11 +111,25 @@
 
     align-items:center;
 
-    gap:var(--space-5);
-
     flex-wrap:wrap;
 
+    gap:.75rem 2rem;
+
+    padding-block:var(--space-5);
+
+    width:100%;
+
+    border-top:
+
+    1px solid rgba(255,255,255,.08);
+
+    border-bottom:
+
+    1px solid rgba(255,255,255,.08);
+
 }
+
+
 
 .footer-nav a{
 
@@ -71,10 +137,14 @@
 
     font-size:var(--text-sm);
 
+    position:relative;
+
     transition:
-        color var(--transition-fast);
+    color .25s ease;
 
 }
+
+
 
 .footer-nav a:hover{
 
@@ -82,73 +152,123 @@
 
 }
 
+
+
+
+
+.footer-nav a::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    bottom:-6px;
+
+    width:0;
+
+    height:2px;
+
+    background:var(--color-primary);
+
+    transition:
+    width .25s ease;
+
+}
+
+
+
+.footer-nav a:hover::after{
+
+    width:100%;
+
+}
+
+
+
+
+
 /* ===========================
-   Copyright
+   COPYRIGHT
 =========================== */
 
-.footer-copy{
 
-    justify-self:end;
+.footer-copy{
 
     color:var(--color-text-muted);
 
     font-size:var(--text-sm);
 
-    text-align:right;
+    opacity:.8;
 
 }
 
-/* ===========================
-   Tablet
-=========================== */
 
-@media (max-width:900px){
 
-    .footer-content{
-
-        grid-template-columns:1fr;
-
-        justify-items:center;
-
-        text-align:center;
-
-        gap:var(--space-5);
-
-    }
-
-    .footer-nav{
-
-        gap:var(--space-4);
-
-    }
-
-    .footer-copy{
-
-        justify-self:center;
-
-        text-align:center;
-
-    }
-
-}
 
 /* ===========================
-   Mobile
+   TABLET
 =========================== */
 
-@media (max-width:576px){
+
+@media(max-width:900px){
+
 
     .footer{
 
-        padding-block:var(--space-5);
+        padding-block:var(--space-7);
 
     }
 
-    .footer-logo{
 
-        font-size:1.2rem;
+
+    .footer-logo img{
+
+        width:150px;
 
     }
+
+
+
+    .footer-nav{
+
+        gap:1rem 1.5rem;
+
+    }
+
+
+}
+
+
+
+
+
+
+
+/* ===========================
+   MOBILE
+=========================== */
+
+
+@media(max-width:576px){
+
+
+    .footer{
+
+        padding-block:var(--space-6);
+
+    }
+
+
+
+    .footer-description{
+
+        font-size:var(--text-sm);
+
+    }
+
+
 
     .footer-nav{
 
@@ -158,20 +278,21 @@
 
     }
 
+
+
     .footer-nav a{
 
-        width:100%;
-
-        text-align:center;
+        width:max-content;
 
     }
+
+
 
     .footer-copy{
 
         font-size:var(--text-xs);
 
-        line-height:1.5;
-
     }
+
 
 }

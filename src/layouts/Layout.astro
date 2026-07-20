@@ -2,36 +2,137 @@
 import Header from "../components/header.astro";
 import Footer from "../components/footer.astro";
 import "../styles/global.css";
+
+const schema = {
+    "@context": "https://schema.org",
+
+    "@graph": [
+        {
+            "@type": "Organization",
+
+            "@id": "https://monkeyreach.com/#organization",
+
+            name: "MonkeyReach Media",
+
+            url: "https://monkeyreach.com",
+
+            logo: {
+                "@type": "ImageObject",
+                url: "https://monkeyreach.com/logos/MonkeyReach-Logo.avif",
+            },
+
+            description:
+                "MonkeyReach Media is a digital marketing agency providing SEO, Google Ads, Meta Ads, social media marketing, website development and growth-focused marketing solutions.",
+
+            founder: {
+                "@type": "Person",
+                name: "Sahil Raajput",
+            },
+
+            address: {
+                "@type": "PostalAddress",
+                addressLocality: "Kurukshetra",
+                addressRegion: "Haryana",
+                addressCountry: "India",
+            },
+
+            contactPoint: {
+                "@type": "ContactPoint",
+
+                contactType: "customer support",
+
+                availableLanguage: ["English", "Hindi"],
+            },
+        },
+
+        {
+            "@type": "LocalBusiness",
+
+            "@id": "https://monkeyreach.com/#localbusiness",
+
+            name: "MonkeyReach Media",
+
+            image: "https://monkeyreach.com/logos/MonkeyReach-Logo.avif",
+
+            url: "https://monkeyreach.com",
+
+            priceRange: "$$",
+
+            areaServed: {
+                "@type": "Place",
+                name: "Worldwide",
+            },
+
+            serviceType: [
+                "Search Engine Optimization",
+
+                "Google Ads Management",
+
+                "Meta Advertising",
+
+                "Social Media Marketing",
+
+                "Website Development",
+            ],
+        },
+
+        {
+            "@type": "WebSite",
+
+            "@id": "https://monkeyreach.com/#website",
+
+            url: "https://monkeyreach.com",
+
+            name: "MonkeyReach",
+
+            publisher: {
+                "@id": "https://monkeyreach.com/#organization",
+            },
+
+            potentialAction: {
+                "@type": "SearchAction",
+
+                target: "https://monkeyreach.com/?s={search_term_string}",
+
+                "query-input": "required name=search_term_string",
+            },
+        },
+    ],
+};
 ---
 
 <!doctype html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
 
-<head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <meta charset="UTF-8">
+        <title>MonkeyReach | Digital Marketing Agency</title>
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+        <meta
+            name="description"
+            content="MonkeyReach Media helps businesses grow through SEO, Google Ads, Meta Ads, social media marketing and performance-focused digital strategies."
+        />
 
-    <title>MonkeyReach</title>
+        <link
+            rel="icon"
+            type="image/webp"
+            href="logos/monkeyreach-site-icon.webp"
+        />
 
-</head>
+        <link rel="canonical" href="https://monkeyreach.com" />
 
-<body>
+        <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+    </head>
 
-    <Header />
+    <body>
+        <Header />
 
-    <main>
+        <main>
+            <slot />
+        </main>
 
-        <slot />
-
-    </main>
-
-    <Footer />
-
-</body>
-
+        <Footer />
+    </body>
 </html>
