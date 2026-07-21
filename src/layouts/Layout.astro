@@ -3,47 +3,89 @@ import Header from "../components/header.astro";
 import Footer from "../components/footer.astro";
 import "../styles/global.css";
 
+
+const siteUrl = "https://monkeyreach.com";
+
+
+const pathname = Astro.url.pathname;
+
+
+// Remove trailing slash except homepage
+const cleanPath =
+    pathname === "/"
+    ? ""
+    : pathname.replace(/\/$/, "");
+
+
+const canonical = `${siteUrl}${cleanPath}`;
+
+
+
 const title = "MonkeyReach | SEO & Digital Marketing Agency";
+
 
 const description =
     "MonkeyReach helps businesses grow through SEO, Google Ads, Meta Ads, Social Media Marketing, Local SEO, Website Development, and performance-driven digital marketing strategies.";
 
-const canonical = "https://monkeyreach.com";
+
+
+const logo =
+    `${siteUrl}/logos/MonkeyReach-Logo.avif`;
+
+const favicon =
+    "/logos/monkeyreach-site-icon.webp";
+
+
 
 const schema = {
+
     "@context": "https://schema.org",
+
     "@graph": [
 
         {
+
             "@type": "Organization",
 
-            "@id": "https://monkeyreach.com/#organization",
+            "@id": `${siteUrl}/#organization`,
 
             name: "MonkeyReach Media",
 
             alternateName: "MonkeyReach",
 
-            url: "https://monkeyreach.com",
+            url: siteUrl,
 
             logo: {
+
                 "@type": "ImageObject",
-                url: "https://monkeyreach.com/logos/MonkeyReach-Logo.avif"
+
+                url: logo
+
             },
 
-            image:
-                "https://monkeyreach.com/logos/MonkeyReach-Logo.avif",
+            image: logo,
+
 
             description:
                 "MonkeyReach is a digital marketing agency helping businesses grow through SEO, Google Ads, Meta Advertising, Social Media Marketing and performance-driven digital strategies.",
 
+
             founder: {
+
                 "@type": "Person",
+
                 name: "Sahil Raajput"
+
             },
 
-            email: "contact@monkeyreach.com",
 
-            telephone: "+91-9053556090",
+            email:
+                "contact@monkeyreach.com",
+
+
+            telephone:
+                "+91-9053556090",
+
 
             sameAs: [
 
@@ -54,147 +96,97 @@ const schema = {
                 "https://www.facebook.com/monkeyreach"
 
             ]
+
         },
 
 
-
         {
+
             "@type": "ProfessionalService",
 
-            "@id": "https://monkeyreach.com/#service",
+            "@id": `${siteUrl}/#service`,
 
             name: "MonkeyReach",
 
-            url: "https://monkeyreach.com",
+            url: siteUrl,
 
-            image:
-                "https://monkeyreach.com/logos/MonkeyReach-Logo.avif",
+            image: logo,
+
 
             description:
                 "SEO and Digital Marketing Agency serving businesses worldwide.",
 
-            areaServed: "Worldwide",
 
-            priceRange: "$$",
+            areaServed:
+                "Worldwide",
 
-            telephone: "+91-9053556090",
 
-            email: "contact@monkeyreach.com",
+            priceRange:
+                "$$",
+
+
+            telephone:
+                "+91-9053556090",
+
+
+            email:
+                "contact@monkeyreach.com",
+
 
             address: {
 
                 "@type": "PostalAddress",
 
-                streetAddress: "Kishan Garh Road",
+                streetAddress:
+                    "Kishan Garh Road",
 
-                addressLocality: "Kurukshetra",
+                addressLocality:
+                    "Kurukshetra",
 
-                addressRegion: "Haryana",
+                addressRegion:
+                    "Haryana",
 
-                postalCode: "136135",
+                postalCode:
+                    "136135",
 
-                addressCountry: "IN"
-
-            },
-
-            openingHoursSpecification: {
-
-                "@type": "OpeningHoursSpecification",
-
-                dayOfWeek: [
-
-                    "Monday",
-                    "Tuesday",
-                    "Wednesday",
-                    "Thursday",
-                    "Friday",
-                    "Saturday",
-                    "Sunday"
-
-                ],
-
-                opens: "09:00",
-
-                closes: "21:00"
-
-            },
-
-            hasOfferCatalog: {
-
-                "@type": "OfferCatalog",
-
-                name: "Digital Marketing Services",
-
-                itemListElement: [
-
-                    {
-                        "@type": "Offer",
-
-                        itemOffered: {
-                            "@type": "Service",
-                            name: "Search Engine Optimization"
-                        }
-
-                    },
-
-                    {
-                        "@type": "Offer",
-
-                        itemOffered: {
-                            "@type": "Service",
-                            name: "Google Ads Management"
-                        }
-
-                    },
-
-                    {
-                        "@type": "Offer",
-
-                        itemOffered: {
-                            "@type": "Service",
-                            name: "Meta Advertising"
-                        }
-
-                    },
-
-                    {
-                        "@type": "Offer",
-
-                        itemOffered: {
-                            "@type": "Service",
-                            name: "Social Media Marketing"
-                        }
-
-                    }
-
-                ]
+                addressCountry:
+                    "IN"
 
             }
 
         },
 
 
-
         {
+
             "@type": "WebSite",
 
-            "@id": "https://monkeyreach.com/#website",
+            "@id": `${siteUrl}/#website`,
 
-            url: "https://monkeyreach.com",
+            url: siteUrl,
 
-            name: "MonkeyReach",
+            name:
+                "MonkeyReach",
 
-            inLanguage: "en",
+            inLanguage:
+                "en",
 
             publisher: {
-                "@id": "https://monkeyreach.com/#organization"
+
+                "@id":
+                `${siteUrl}/#organization`
+
             }
 
         }
 
+
     ]
+
 };
+
 ---
+
 
 <!doctype html>
 
@@ -202,145 +194,182 @@ const schema = {
 
 <head>
 
-    <meta charset="UTF-8" />
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1"
-    />
+<meta charset="UTF-8" />
 
-    <title>{title}</title>
 
-    <meta
-        name="description"
-        content={description}
-    />
-
-    <meta
-        name="robots"
-        content="index, follow, max-image-preview:large"
-    />
-
-    <meta
-        name="author"
-        content="MonkeyReach"
-    />
-
-    <meta
-        name="theme-color"
-        content="#050505"
-    />
-
-    <meta
-        name="generator"
-        content="Astro"
-    />
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1"
+/>
 
 
 
-    <!-- Canonical -->
-
-    <link
-        rel="canonical"
-        href={canonical}
-    />
+<title>{title}</title>
 
 
 
-    <!-- Favicons -->
-
-    <link
-        rel="icon"
-        type="image/webp"
-        href="/logos/monkeyreach-site-icon.webp"
-    />
-
-    <link
-        rel="apple-touch-icon"
-        href="/logos/monkeyreach-site-icon.webp"
-    />
+<meta
+name="description"
+content={description}
+/>
 
 
 
-    <!-- Open Graph -->
-
-    <meta
-        property="og:type"
-        content="website"
-    />
-
-    <meta
-        property="og:title"
-        content={title}
-    />
-
-    <meta
-        property="og:description"
-        content={description}
-    />
-
-    <meta
-        property="og:url"
-        content={canonical}
-    />
-
-    <meta
-        property="og:site_name"
-        content="MonkeyReach"
-    />
-
-    <meta
-        property="og:image"
-        content="https://monkeyreach.com/logos/MonkeyReach-Logo.avif"
-    />
+<meta
+name="robots"
+content="index, follow, max-image-preview:large"
+/>
 
 
 
-    <!-- Twitter -->
-
-    <meta
-        name="twitter:card"
-        content="summary_large_image"
-    />
-
-    <meta
-        name="twitter:title"
-        content={title}
-    />
-
-    <meta
-        name="twitter:description"
-        content={description}
-    />
-
-    <meta
-        name="twitter:image"
-        content="https://monkeyreach.com/logos/MonkeyReach-Logo.avif"
-    />
+<meta
+name="author"
+content="MonkeyReach"
+/>
 
 
 
-    <!-- Structured Data -->
+<meta
+name="theme-color"
+content="#050505"
+/>
 
-    <script
-        type="application/ld+json"
-        set:html={JSON.stringify(schema)}
-    />
+
+
+<meta
+name="generator"
+content="Astro"
+/>
+
+
+
+<!-- Canonical -->
+
+<link
+rel="canonical"
+href={canonical}
+/>
+
+
+
+<!-- Favicons -->
+
+<link
+rel="icon"
+type="image/webp"
+href={favicon}
+/>
+
+
+<link
+rel="apple-touch-icon"
+href={favicon}
+/>
+
+
+
+
+<!-- Open Graph -->
+
+
+<meta
+property="og:type"
+content="website"
+/>
+
+
+<meta
+property="og:title"
+content={title}
+/>
+
+
+<meta
+property="og:description"
+content={description}
+/>
+
+
+<meta
+property="og:url"
+content={canonical}
+/>
+
+
+<meta
+property="og:site_name"
+content="MonkeyReach"
+/>
+
+
+<meta
+property="og:image"
+content={logo}
+/>
+
+
+
+
+<!-- Twitter -->
+
+
+<meta
+name="twitter:card"
+content="summary_large_image"
+/>
+
+
+<meta
+name="twitter:title"
+content={title}
+/>
+
+
+<meta
+name="twitter:description"
+content={description}
+/>
+
+
+<meta
+name="twitter:image"
+content={logo}
+/>
+
+
+
+
+<!-- Structured Data -->
+
+
+<script
+type="application/ld+json"
+set:html={JSON.stringify(schema)}
+/>
+
+
 
 </head>
 
+
 <body>
 
-    <Header />
 
-    <main>
+<Header />
 
-        <slot />
 
-    </main>
+<main>
 
-    <Footer />
+<slot />
+
+</main>
+
+
+<Footer />
+
 
 </body>
+
 
 </html>
