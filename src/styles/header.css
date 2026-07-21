@@ -59,7 +59,7 @@
 
     display:block;
 
-    width:clamp(90px,10vw,100px);
+    width:clamp(90px,6vw,100px);
 
     height:auto;
 
