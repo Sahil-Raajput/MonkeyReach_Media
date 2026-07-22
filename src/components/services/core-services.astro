@@ -1,15 +1,11 @@
-
-
 ---
-
 const services = [
-
     {
         title: "Search Engine Optimization",
         description:
             "Improve your organic visibility, attract qualified visitors, and build sustainable growth through strategic SEO.",
         icon: "seo",
-        link: "/services/seo"
+        link: "/services/seo",
     },
 
     {
@@ -17,7 +13,7 @@ const services = [
         description:
             "Reach customers actively searching for your products or services with targeted paid search campaigns.",
         icon: "ads",
-        link: "/services/google-ads"
+        link: "/services/google-ads",
     },
 
     {
@@ -25,7 +21,7 @@ const services = [
         description:
             "Generate demand and reach new audiences through performance-focused Facebook and Instagram advertising.",
         icon: "meta",
-        link: "/services/meta-ads"
+        link: "/services/meta-ads",
     },
 
     {
@@ -33,262 +29,243 @@ const services = [
         description:
             "Build brand awareness and engage your audience through consistent, strategic social media content.",
         icon: "social",
-        link: "/services/social-media"
-    }
+        link: "/services/social-media",
+    },
 
+    {
+        title: "Digital Marketing",
+
+        description:
+            "A complete digital marketing solution that combines SEO, Google Ads, Meta Ads, social media marketing, content strategy, and conversion-focused execution to help your business grow faster.",
+
+        icon: "marketing",
+
+        link: "/services/digital-marketing",
+    },
 ];
 ---
 
-
 <section class="services-grid">
+    {
+        services.map((service) => (
+            <article class="service-card">
+                <div class="service-icon">
+                    {service.icon === "seo" && (
+                        <svg viewBox="0 0 24 24">
+                            <circle cx="11" cy="11" r="6" />
+                            <line x1="16" y1="16" x2="21" y2="21" />
+                            <path d="M11 8v6" />
+                            <path d="M8 11h6" />
+                        </svg>
+                    )}
 
-    {services.map((service)=> (
+                    {service.icon === "ads" && (
+                        <svg viewBox="0 0 24 24">
+                            <path d="M4 13V9l12-4v14L4 15z" />
+                            <path d="M16 10h3a2 2 0 010 4h-3" />
+                            <line x1="7" y1="16" x2="8" y2="20" />
+                        </svg>
+                    )}
 
-        <article class="service-card">
+                    {service.icon === "meta" && (
+                        <svg viewBox="0 0 24 24">
+                            <path d="M4 12c3-7 7-7 10 0s7 7 10 0" />
+                            <path d="M4 12c3 7 7 7 10 0s7-7 10 0" />
+                        </svg>
+                    )}
 
+                    {service.icon === "social" && (
+                        <svg viewBox="0 0 24 24">
+                            <circle cx="8" cy="10" r="3" />
+                            <circle cx="17" cy="8" r="2" />
+                            <path d="M3 20c0-3 3-5 5-5s5 2 5 5" />
+                            <path d="M15 14c3 0 5 2 6 5" />
+                        </svg>
+                    )}
 
-            <div class="service-icon">
+                    {service.icon === "marketing" && (
+                        <svg viewBox="0 0 24 24">
+                            <path d="M4 19V9" />
 
+                            <path d="M10 19V5" />
 
-                {service.icon === "seo" && (
+                            <path d="M16 19V12" />
 
-                    <svg viewBox="0 0 24 24">
-                        <circle cx="11" cy="11" r="6"/>
-                        <line x1="16" y1="16" x2="21" y2="21"/>
-                        <path d="M11 8v6"/>
-                        <path d="M8 11h6"/>
-                    </svg>
+                            <path d="M22 19V3" />
+                        </svg>
+                    )}
+                </div>
 
-                )}
+                <h3>{service.title}</h3>
 
+                <p>{service.description}</p>
 
-                {service.icon === "ads" && (
-
-                    <svg viewBox="0 0 24 24">
-                        <path d="M4 13V9l12-4v14L4 15z"/>
-                        <path d="M16 10h3a2 2 0 010 4h-3"/>
-                        <line x1="7" y1="16" x2="8" y2="20"/>
-                    </svg>
-
-                )}
-
-
-                {service.icon === "meta" && (
-
-                    <svg viewBox="0 0 24 24">
-                        <path d="M4 12c3-7 7-7 10 0s7 7 10 0"/>
-                        <path d="M4 12c3 7 7 7 10 0s7-7 10 0"/>
-                    </svg>
-
-                )}
-
-
-                {service.icon === "social" && (
-
-                    <svg viewBox="0 0 24 24">
-                        <circle cx="8" cy="10" r="3"/>
-                        <circle cx="17" cy="8" r="2"/>
-                        <path d="M3 20c0-3 3-5 5-5s5 2 5 5"/>
-                        <path d="M15 14c3 0 5 2 6 5"/>
-                    </svg>
-
-                )}
-
-            </div>
-
-
-            <h3>
-                {service.title}
-            </h3>
-
-
-            <p>
-                {service.description}
-            </p>
-
-
-            <a href={service.link}>
-                Learn More →
-            </a>
-
-
-        </article>
-
-    ))}
-
+                <a href={service.link}>Learn More →</a>
+            </article>
+        ))
+    }
 </section>
 
 <style>
-/* ==========================================================
+    /* ==========================================================
    SERVICES GRID
 ========================================================== */
 
-.services-grid{
+    .services-grid {
+        width: min(100%, 1180px);
 
-    width:100%;
+        margin: var(--space-4) auto 0;
 
-    display:grid;
+        padding-inline: clamp(1rem, 4vw, 2rem);
 
-    grid-template-columns:repeat(4, 1fr);
+        display: grid;
 
-    gap:24px;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
 
-    margin:60px auto;
+        gap: clamp(1.25rem, 2vw, 2rem);
+    }
 
-}
-
-
-
-/* ==========================================================
+    /* ==========================================================
    CARD
 ========================================================== */
 
-.service-card{
+    .service-card {
+        display: flex;
 
-    display:flex;
+        flex-direction: column;
 
-    flex-direction:column;
+        height: 100%;
 
-    padding:30px;
+        padding: clamp(1.75rem, 2vw, 2rem);
 
-    min-height:340px;
+        background: var(--color-surface);
 
-    background:#0d0d0d;
+        border: var(--border-default);
 
-    border:1px solid rgba(255,255,255,.08);
+        border-radius: var(--radius-lg);
 
-    border-radius:20px;
+        transition:
+            transform var(--transition-normal),
+            border-color var(--transition-normal),
+            box-shadow var(--transition-normal);
+    }
 
-    transition:.3s ease;
+    .service-card:hover {
+        transform: translateY(-6px);
 
-}
+        border-color: rgba(255, 77, 0, 0.45);
 
+        box-shadow: var(--shadow-soft);
+    }
 
-
-.service-card:hover{
-
-    transform:translateY(-8px);
-
-    border-color:#ff4d00;
-
-    box-shadow:
-    0 20px 40px rgba(0,0,0,.35);
-
-}
-
-
-
-/* ==========================================================
+    /* ==========================================================
    ICON
 ========================================================== */
 
+    .service-icon {
+        width: 64px;
 
-.service-icon{
+        height: 64px;
 
-    width:60px;
+        display: flex;
 
-    height:60px;
+        align-items: center;
 
-    display:flex;
+        justify-content: center;
 
-    align-items:center;
+        margin-bottom: var(--space-5);
 
-    justify-content:center;
+        border-radius: 18px;
 
-    margin-bottom:24px;
+        background: rgba(255, 77, 0, 0.1);
 
-    border-radius:16px;
+        border: 1px solid rgba(255, 77, 0, 0.2);
+    }
 
-    background:
-    rgba(255,77,0,.12);
+    .service-icon svg {
+        width: 30px;
 
-    border:1px solid rgba(255,77,0,.25);
+        height: 30px;
 
-}
+        stroke: var(--color-primary);
 
+        fill: none;
 
-.service-icon svg{
+        stroke-width: 2;
 
-    width:28px;
+        stroke-linecap: round;
 
-    height:28px;
+        stroke-linejoin: round;
+    }
 
-    stroke:#ff4d00;
-
-    fill:none;
-
-    stroke-width:2;
-
-}
-
-
-
-/* ==========================================================
+    /* ==========================================================
    TEXT
 ========================================================== */
 
+    .service-card h3 {
+        margin-bottom: var(--space-4);
 
-.service-card h3{
+        font-size: 1.35rem;
 
-    font-size:1.25rem;
+        line-height: 1.25;
+    }
 
-    margin-bottom:15px;
+    .service-card p {
+        flex: 1;
 
-    line-height:1.3;
+        margin-bottom: var(--space-6);
 
-}
+        color: var(--color-text-muted);
 
+        line-height: 1.8;
+    }
 
-.service-card p{
+    .service-card a {
+        display: inline-flex;
 
-    color:#a1a1aa;
+        align-items: center;
 
-    line-height:1.7;
+        gap: 0.4rem;
 
-    font-size:.95rem;
+        margin-top: auto;
 
-    flex-grow:1;
+        color: var(--color-primary);
 
-}
+        font-weight: 600;
 
+        transition: gap var(--transition-fast);
+    }
 
-.service-card a{
+    .service-card:hover a {
+        gap: 0.7rem;
+    }
 
-    margin-top:25px;
-
-    color:#ff4d00;
-
-    font-weight:600;
-
-}
-
-
-
-/* ==========================================================
-   RESPONSIVE
+    /* ==========================================================
+   TABLET
 ========================================================== */
 
-
-@media(max-width:1100px){
-
-    .services-grid{
-
-        grid-template-columns:repeat(2,1fr);
-
+    .service-card:last-child {
+        grid-column: span 2;
     }
 
-}
-
-
-
-@media(max-width:650px){
-
-    .services-grid{
-
-        grid-template-columns:1fr;
-
+    @media (max-width: 992px) {
+        .services-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
     }
 
-}
+    /* ==========================================================
+   MOBILE
+========================================================== */
 
+    @media (max-width: 640px) {
+        .services-grid {
+            grid-template-columns: 1fr;
+
+            padding-inline: 0;
+        }
+        .service-card:last-child {
+            grid-column: auto;
+        }
+    }
 </style>
