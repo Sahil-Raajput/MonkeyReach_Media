@@ -1,3 +1,8 @@
+/* ==========================================================
+   HEADER
+========================================================== */
+
+
 .site-header{
 
     position:sticky;
@@ -15,9 +20,10 @@
 }
 
 
-/* ===========================
-   Header Layout
-=========================== */
+
+/* ==========================================================
+   HEADER LAYOUT
+========================================================== */
 
 
 .header-inner{
@@ -28,19 +34,17 @@
 
     justify-content:space-between;
 
-    min-height:var(--header-height);
+    min-height:68px;
 
-    gap:clamp(1rem,3vw,3rem);
+    gap:clamp(.75rem,2vw,2rem);
 
 }
 
 
 
-
-
-/* ===========================
-   Logo
-=========================== */
+/* ==========================================================
+   LOGO
+========================================================== */
 
 
 .logo{
@@ -59,7 +63,7 @@
 
     display:block;
 
-    width:clamp(90px,6vw,100px);
+    width:clamp(82px,5vw,92px);
 
     height:auto;
 
@@ -81,9 +85,9 @@
 
 
 
-/* ===========================
-   Navigation
-=========================== */
+/* ==========================================================
+   NAVIGATION
+========================================================== */
 
 
 .nav{
@@ -94,7 +98,7 @@
 
     justify-content:center;
 
-    gap:clamp(1rem,2vw,2.5rem);
+    gap:clamp(1rem,2vw,2rem);
 
     margin-inline:auto;
 
@@ -112,7 +116,7 @@
 
     font-weight:500;
 
-    padding:.4rem 0;
+    padding:.35rem 0;
 
     transition:color var(--transition-fast);
 
@@ -160,9 +164,9 @@
 
 
 
-/* ===========================
-   Actions
-=========================== */
+/* ==========================================================
+   HEADER ACTIONS
+========================================================== */
 
 
 .header-actions{
@@ -171,7 +175,7 @@
 
     align-items:center;
 
-    gap:var(--space-4);
+    gap:var(--space-3);
 
     flex-shrink:0;
 
@@ -188,6 +192,7 @@
 
 
 
+
 .login-btn{
 
     display:inline-flex;
@@ -196,7 +201,7 @@
 
     justify-content:center;
 
-    padding:12px 18px;
+    padding:10px 16px;
 
     border-radius:var(--radius-md);
 
@@ -218,6 +223,8 @@
 
 
 
+
+
 .cta-btn{
 
     display:inline-flex;
@@ -226,20 +233,23 @@
 
     justify-content:center;
 
-    padding:12px 22px;
+    padding:10px 18px;
 
     border-radius:var(--radius-md);
 
     background:var(--color-primary);
 
-    color:var(--color-text);
+    color:#fff;
 
     font-weight:600;
 
     box-shadow:
+
         0 8px 24px rgba(255,77,0,.25);
 
+
     transition:
+
         background var(--transition-fast),
         transform var(--transition-fast),
         box-shadow var(--transition-fast);
@@ -255,6 +265,7 @@
     transform:translateY(-2px);
 
     box-shadow:
+
         0 12px 28px rgba(255,77,0,.35);
 
 }
@@ -263,16 +274,16 @@
 
 
 
-/* ===========================
-   Mobile Menu Button
-=========================== */
+/* ==========================================================
+   MOBILE MENU BUTTON
+========================================================== */
 
 
 .menu-btn{
 
     display:none;
 
-    padding:var(--space-2);
+    padding:6px;
 
     background:none;
 
@@ -288,7 +299,7 @@
 
     display:block;
 
-    width:24px;
+    width:22px;
 
     height:2px;
 
@@ -296,7 +307,42 @@
 
     background:var(--color-text);
 
-    transition:var(--transition-normal);
+    transition:.3s ease;
+
+}
+
+
+
+/* Hamburger → Cross */
+
+
+.menu-btn.active span:nth-child(1){
+
+    transform:
+
+    translateY(7px)
+
+    rotate(45deg);
+
+}
+
+
+
+.menu-btn.active span:nth-child(2){
+
+    opacity:0;
+
+}
+
+
+
+.menu-btn.active span:nth-child(3){
+
+    transform:
+
+    translateY(-7px)
+
+    rotate(-45deg);
 
 }
 
@@ -304,17 +350,25 @@
 
 
 
-/* ===========================
-   Tablet
-=========================== */
+/* ==========================================================
+   TABLET
+========================================================== */
 
 
-@media (max-width:900px){
+@media(max-width:900px){
+
+
+    .header-inner{
+
+        min-height:64px;
+
+    }
+
 
 
     .logo img{
 
-        width: 70px;
+        width:85px;
 
     }
 
@@ -352,11 +406,13 @@
 
 
 
+
     .nav.active{
 
         display:flex;
 
     }
+
 
 
 
@@ -380,6 +436,7 @@
 
 
 
+
     .cta-btn{
 
         display:none;
@@ -393,15 +450,18 @@
 
 
 
-/* ===========================
-   Mobile
-=========================== */
+/* ==========================================================
+   MOBILE
+========================================================== */
 
 
-@media (max-width:576px){
+@media(max-width:576px){
+
 
 
     .header-inner{
+
+        min-height:64px;
 
         gap:var(--space-3);
 
@@ -411,7 +471,7 @@
 
     .logo img{
 
-        width: 70px;
+        width:82px;
 
     }
 
@@ -427,9 +487,10 @@
 
     .menu-btn{
 
-        padding:6px;
+        padding:5px;
 
     }
+
 
 
 }
