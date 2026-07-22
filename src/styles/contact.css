@@ -4,11 +4,10 @@
 
 .contact-hero{
 
-    padding-block:var(--space-6);
-
     text-align:center;
 
 }
+
 
 .contact-hero .container{
 
@@ -17,15 +16,18 @@
 }
 
 
+
 /* ==========================================================
    MAIN SECTION
 ========================================================== */
 
+
 .contact-main{
 
-    padding-bottom:var(--space-6);
+    padding-bottom:var(--space-8);
 
 }
+
 
 .contact-grid{
 
@@ -40,9 +42,11 @@
 }
 
 
+
 /* ==========================================================
    CONTACT INFO
 ========================================================== */
+
 
 .contact-info{
 
@@ -52,29 +56,30 @@
 
 }
 
+
 .contact-info h2{
 
-    margin-bottom:var(--space-6);
+    margin-bottom:var(--space-5);
 
     font-size:var(--text-2xl);
 
 }
 
+
 .contact-info>p{
-
-    color:var(--color-text-muted);
-
-    line-height:1.8;
 
     margin-bottom:var(--space-6);
 
+    line-height:1.8;
+
 }
+
 
 .contact-card{
 
     padding:var(--space-5);
 
-    margin-bottom:var(--space-6);
+    margin-bottom:var(--space-5);
 
     background:var(--color-surface);
 
@@ -82,17 +87,20 @@
 
     border-radius:var(--radius-lg);
 
-    transition:.3s;
+    transition:var(--transition-normal);
 
 }
+
 
 .contact-card:hover{
 
     transform:translateY(-3px);
 
-    border-color:rgba(255,255,255,.12);
+    border-color:rgba(255,255,255,.2);
 
 }
+
+
 
 .contact-card h3{
 
@@ -104,15 +112,17 @@
 
 }
 
+
+
 .contact-card p{
 
     margin:0;
 
-    color:var(--color-text-muted);
-
     line-height:1.8;
 
 }
+
+
 
 .contact-card a{
 
@@ -122,9 +132,9 @@
 
     word-break:break-word;
 
-    transition:.25s;
-
 }
+
+
 
 .contact-card a:hover{
 
@@ -132,9 +142,9 @@
 
 }
 
-.contact-note{
 
-    margin-top:var(--space-5);
+
+.contact-note{
 
     padding:var(--space-5);
 
@@ -149,9 +159,11 @@
 }
 
 
+
 /* ==========================================================
-   FORM
+   DIRECT CONTACT BOX
 ========================================================== */
+
 
 .contact-form-wrapper{
 
@@ -161,13 +173,21 @@
 
     border-radius:var(--radius-xl);
 
-    background:linear-gradient(
+    background:
+
+    linear-gradient(
+
         180deg,
-        rgba(255,255,255,.02),
+
+        rgba(255,255,255,.03),
+
         rgba(255,255,255,.01)
+
     );
 
 }
+
+
 
 .contact-form-wrapper h2{
 
@@ -177,110 +197,49 @@
 
 }
 
+
+
 .contact-form-wrapper>p{
 
     margin-bottom:var(--space-7);
-
-    color:var(--color-text-muted);
 
     line-height:1.8;
 
 }
 
-.contact-form{
 
-    display:flex;
 
-    flex-direction:column;
-
-    gap:var(--space-5);
-
-}
-
-.form-row{
+.direct-contact{
 
     display:grid;
 
-    grid-template-columns:1fr 1fr;
+    grid-template-columns:repeat(2,1fr);
 
     gap:var(--space-5);
 
-}
-
-.form-group{
-
-    display:flex;
-
-    flex-direction:column;
-
-    gap:.7rem;
+    margin-bottom:var(--space-6);
 
 }
 
-.form-group label{
 
-    font-size:var(--text-sm);
 
-    font-weight:600;
+.direct-contact .contact-card{
 
-}
-
-.form-group input,
-.form-group select,
-.form-group textarea{
-
-    width:100%;
-
-    padding:15px 18px;
-
-    border-radius:var(--radius-md);
-
-    border:1px solid rgba(255,255,255,.08);
-
-    background:rgba(255,255,255,.03);
-
-    color:var(--color-text);
-
-    font:inherit;
-
-    transition:.25s;
+    margin-bottom:0;
 
 }
 
-.form-group input::placeholder,
-.form-group textarea::placeholder{
 
-    color:var(--color-text-muted);
-
-}
-
-.form-group input:focus,
-.form-group textarea:focus,
-.form-group select:focus{
-
-    outline:none;
-
-    border-color:var(--color-primary);
-
-    box-shadow:0 0 0 3px rgba(255,77,0,.15);
-
-}
-
-textarea{
-
-    resize:vertical;
-
-    min-height:180px;
-
-}
 
 .submit-btn{
 
-    align-self:flex-start;
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
 
     padding:15px 32px;
-
-    border:none;
 
     border-radius:var(--radius-md);
 
@@ -290,11 +249,11 @@ textarea{
 
     font-weight:700;
 
-    cursor:pointer;
-
-    transition:.3s;
+    transition:var(--transition-normal);
 
 }
+
+
 
 .submit-btn:hover{
 
@@ -304,26 +263,12 @@ textarea{
 
 }
 
-.form-disclaimer{
-
-    margin-top:var(--space-2);
-
-    color:var(--color-text-muted);
-
-    font-size:var(--text-sm);
-
-}
-
-.form-disclaimer a{
-
-    color:var(--color-primary);
-
-}
 
 
 /* ==========================================================
    LOCATION
 ========================================================== */
+
 
 .location-section{
 
@@ -331,15 +276,19 @@ textarea{
 
 }
 
+
+
 .location-content{
 
     max-width:850px;
 
-    margin:auto;
+    margin-inline:auto;
 
     text-align:center;
 
 }
+
+
 
 .location-content h2{
 
@@ -347,15 +296,17 @@ textarea{
 
 }
 
+
+
 .location-content p{
 
     margin-bottom:var(--space-6);
 
-    color:var(--color-text-muted);
-
     line-height:1.9;
 
 }
+
+
 
 .location-btn{
 
@@ -367,9 +318,11 @@ textarea{
 
     border:var(--border-default);
 
-    transition:.3s;
+    transition:var(--transition-normal);
 
 }
+
+
 
 .location-btn:hover{
 
@@ -380,15 +333,19 @@ textarea{
 }
 
 
+
 /* ==========================================================
    OTHER OPTIONS
 ========================================================== */
 
+
 .contact-options{
 
-    padding-block:var(--space-5);
+    padding-block:var(--space-6);
 
 }
+
+
 
 .section-heading{
 
@@ -397,6 +354,8 @@ textarea{
     margin-bottom:var(--space-8);
 
 }
+
+
 
 .options-grid{
 
@@ -408,6 +367,8 @@ textarea{
 
 }
 
+
+
 .option-card{
 
     padding:var(--space-7);
@@ -418,17 +379,21 @@ textarea{
 
     border-radius:var(--radius-xl);
 
-    transition:.3s;
+    transition:var(--transition-normal);
 
 }
+
+
 
 .option-card:hover{
 
     transform:translateY(-4px);
 
-    border-color:rgba(255,255,255,.12);
+    border-color:rgba(255,255,255,.2);
 
 }
+
+
 
 .option-card h3{
 
@@ -436,15 +401,17 @@ textarea{
 
 }
 
+
+
 .option-card p{
 
     margin-bottom:var(--space-5);
 
-    color:var(--color-text-muted);
-
     line-height:1.8;
 
 }
+
+
 
 .option-card a{
 
@@ -455,21 +422,25 @@ textarea{
 }
 
 
+
 /* ==========================================================
    CTA
 ========================================================== */
 
+
 .contact-cta{
 
-    padding-block:var(--space-6);
+    padding-block:var(--space-8);
 
 }
+
+
 
 .cta-box{
 
     max-width:900px;
 
-    margin:auto;
+    margin-inline:auto;
 
     text-align:center;
 
@@ -480,10 +451,22 @@ textarea{
     border:var(--border-default);
 
     background:
-    radial-gradient(circle at top,rgba(255,77,0,.15),transparent 60%),
+
+    radial-gradient(
+
+        circle at top,
+
+        rgba(255,77,0,.15),
+
+        transparent 60%
+
+    ),
+
     var(--color-surface);
 
 }
+
+
 
 .cta-box h2{
 
@@ -493,6 +476,8 @@ textarea{
 
 }
 
+
+
 .cta-box p{
 
     max-width:700px;
@@ -501,18 +486,21 @@ textarea{
 
     margin-bottom:var(--space-6);
 
-    color:var(--color-text-muted);
-
     line-height:1.9;
 
 }
+
+
+
 
 
 /* ==========================================================
    TABLET
 ========================================================== */
 
-@media (max-width:992px){
+
+@media(max-width:992px){
+
 
     .contact-grid{
 
@@ -520,11 +508,13 @@ textarea{
 
     }
 
+
     .contact-info{
 
         position:static;
 
     }
+
 
     .options-grid{
 
@@ -532,26 +522,19 @@ textarea{
 
     }
 
+
 }
+
+
 
 
 /* ==========================================================
    MOBILE
 ========================================================== */
 
-@media (max-width:768px){
 
-    .contact-hero{
+@media(max-width:768px){
 
-        padding-block:var(--space-8);
-
-    }
-
-    .contact-main{
-
-        padding-bottom:var(--space-8);
-
-    }
 
     .contact-form-wrapper{
 
@@ -559,19 +542,20 @@ textarea{
 
     }
 
-    .form-row{
+
+    .direct-contact{
 
         grid-template-columns:1fr;
 
     }
 
+
     .submit-btn{
 
         width:100%;
 
-        justify-content:center;
-
     }
+
 
     .cta-box{
 
@@ -579,15 +563,21 @@ textarea{
 
     }
 
+
 }
 
-@media (max-width:576px){
+
+
+
+@media(max-width:576px){
+
 
     .contact-card{
 
-        padding:var(--space-6);
+        padding:var(--space-5);
 
     }
+
 
     .contact-form-wrapper{
 
@@ -595,11 +585,13 @@ textarea{
 
     }
 
+
     .option-card{
 
         padding:var(--space-5);
 
     }
+
 
     .location-btn{
 
@@ -608,5 +600,6 @@ textarea{
         justify-content:center;
 
     }
+
 
 }
