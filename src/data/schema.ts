@@ -1,340 +1,486 @@
+import type { SEOData } from "./seo";
+
+
 const SITE_URL = "https://monkeyreach.com";
 
+
 const LOGO =
-    `${SITE_URL}/logos/MonkeyReach-Logo.avif`;
+`${SITE_URL}/logos/MonkeyReach-Logo.avif`;
 
 
-export function getSchema(type: string) {
 
 
-    switch(type) {
 
+export function getSchema(
+    type: SEOData["schema"],
+    seo: SEOData
+) {
 
-        case "home":
 
-            return {
 
-                "@context": "https://schema.org",
+switch(type) {
 
-                "@graph": [
 
-                    {
 
+case "home":
 
-                        "@type": "Organization",
 
-                        "@id":
-                        `${SITE_URL}/#organization`,
+return {
 
 
-                        name:
-                        "MonkeyReach Media",
+"@context":"https://schema.org",
 
 
-                        alternateName:
-                        "MonkeyReach",
+"@graph":[
 
 
-                        url:
-                        SITE_URL,
+{
 
 
-                        logo: {
+"@type":"Organization",
 
-                            "@type":
-                            "ImageObject",
 
-                            url:
-                            LOGO
+"@id":
+`${SITE_URL}/#organization`,
 
-                        },
 
+"name":
+"MonkeyReach Media",
 
-                        description:
-                        "MonkeyReach is a digital marketing agency helping businesses grow through SEO, Google Ads, Meta Advertising, Social Media Marketing and performance-driven digital strategies.",
 
+"alternateName":
+"MonkeyReach",
 
-                        founder: {
 
-                            "@type":
-                            "Person",
+"url":
+SITE_URL,
 
-                            name:
-                            "Sahil Raajput"
 
-                        },
+"logo":{
 
+"@type":"ImageObject",
 
-                        email:
-                        "contact@monkeyreach.com",
+"url":LOGO
 
+},
 
-                        telephone:
-                        "+91-9053556090",
 
+"description":
+"MonkeyReach is a digital marketing agency helping businesses grow through SEO, Google Ads, Meta Advertising, Social Media Marketing and performance-driven digital strategies.",
 
-                        sameAs: [
 
-                            "https://www.instagram.com/monkey_reach/",
+"founder":{
 
-                            "https://www.linkedin.com/company/monkey-reach/",
+"@type":"Person",
 
-                            "https://www.threads.com/@monkey_reach"
+"name":"Sahil Raajput"
 
-                        ]
+},
 
-                    },
 
+"email":
+"contact@monkeyreach.com",
 
-                    {
 
+"telephone":
+"+91-9053556090",
 
-                        "@type":
-                        "ProfessionalService",
 
+"sameAs":[
 
-                        "@id":
-                        `${SITE_URL}/#service`,
+"https://www.instagram.com/monkey_reach/",
 
+"https://www.linkedin.com/company/monkey-reach/",
 
-                        name:
-                        "MonkeyReach",
+"https://www.threads.com/@monkey_reach"
 
+]
 
-                        url:
-                        SITE_URL,
 
+},
 
-                        image:
-                        LOGO,
 
 
-                        description:
-                        "SEO and Digital Marketing Agency serving businesses worldwide.",
 
+{
 
-                        areaServed:
-                        "Worldwide",
 
+"@type":"ProfessionalService",
 
-                        priceRange:
-                        "$$",
 
+"@id":
+`${SITE_URL}/#service`,
 
-                        telephone:
-                        "+91-9053556090",
 
+"name":
+"MonkeyReach",
 
-                        email:
-                        "contact@monkeyreach.com",
 
+"url":
+SITE_URL,
 
-                        address: {
 
+"image":
+LOGO,
 
-                            "@type":
-                            "PostalAddress",
 
+"description":
+"SEO and Digital Marketing Agency serving businesses worldwide.",
 
-                            streetAddress:
-                            "Kishan Garh Road",
 
+"areaServed":
+"Worldwide",
 
-                            addressLocality:
-                            "Kurukshetra",
 
+"priceRange":
+"$$",
 
-                            addressRegion:
-                            "Haryana",
 
+"telephone":
+"+91-9053556090",
 
-                            postalCode:
-                            "136135",
 
+"email":
+"contact@monkeyreach.com",
 
-                            addressCountry:
-                            "IN"
 
-                        }
 
-                    },
+"address":{
 
 
-                    {
+"@type":"PostalAddress",
 
 
-                        "@type":
-                        "WebSite",
+"streetAddress":
+"Kishan Garh Road",
 
 
-                        "@id":
-                        `${SITE_URL}/#website`,
+"addressLocality":
+"Kurukshetra",
 
 
-                        url:
-                        SITE_URL,
+"addressRegion":
+"Haryana",
 
 
-                        name:
-                        "MonkeyReach",
+"postalCode":
+"136135",
 
 
-                        inLanguage:
-                        "en",
+"addressCountry":
+"IN"
 
 
-                        publisher: {
+}
 
-                            "@id":
-                            `${SITE_URL}/#organization`
 
-                        }
+},
 
-                    }
 
-                ]
 
-            };
 
+{
 
 
+"@type":"WebSite",
 
 
-        case "about":
+"@id":
+`${SITE_URL}/#website`,
 
-            return {
 
+"url":
+SITE_URL,
 
-                "@context":
-                "https://schema.org",
 
+"name":
+"MonkeyReach",
 
-                "@type":
-                "AboutPage",
 
+"inLanguage":
+seo.language,
 
-                "@id":
-                `${SITE_URL}/about-us/#webpage`,
 
+"publisher":{
 
-                url:
-                `${SITE_URL}/about-us/`,
 
+"@id":
+`${SITE_URL}/#organization`
 
-                name:
-                "About MonkeyReach",
+}
 
 
-                isPartOf: {
+}
 
-                    "@id":
-                    `${SITE_URL}/#website`
 
-                },
 
+]
 
-                about: {
 
-                    "@id":
-                    `${SITE_URL}/#organization`
+};
 
-                }
 
-            };
 
 
 
 
 
-        case "contact":
 
-            return {
 
+case "about":
 
-                "@context":
-                "https://schema.org",
 
+return {
 
-                "@type":
-                "ContactPage",
 
+"@context":"https://schema.org",
 
-                "@id":
-                `${SITE_URL}/contact/#webpage`,
 
+"@type":"AboutPage",
 
-                url:
-                `${SITE_URL}/contact/`,
 
+"@id":
+`${seo.canonical}#webpage`,
 
-                name:
-                "Contact MonkeyReach",
 
+"url":
+seo.canonical,
 
-                about: {
 
-                    "@id":
-                    `${SITE_URL}/#organization`
+"name":
+seo.title,
 
-                }
 
-            };
+"description":
+seo.description,
 
 
+"isPartOf":{
 
 
+"@id":
+`${SITE_URL}/#website`
 
-        case "collection":
+},
 
-            return {
 
+"about":{
 
-                "@context":
-                "https://schema.org",
 
+"@id":
+`${SITE_URL}/#organization`
 
-                "@type":
-                "CollectionPage",
+},
 
 
-                name:
-                "MonkeyReach Services",
+"publisher":{
 
 
-                url:
-                SITE_URL
+"@id":
+`${SITE_URL}/#organization`
 
-            };
+}
 
 
+};
 
 
 
-        case "webpage":
 
-        default:
 
-            return {
 
 
-                "@context":
-                "https://schema.org",
 
 
-                "@type":
-                "WebPage",
+case "contact":
 
 
-                name:
-                "MonkeyReach",
+return {
 
 
-                url:
-                SITE_URL
+"@context":"https://schema.org",
 
-            };
 
+"@type":"ContactPage",
 
-    }
+
+"@id":
+`${seo.canonical}#webpage`,
+
+
+"url":
+seo.canonical,
+
+
+"name":
+seo.title,
+
+
+"description":
+seo.description,
+
+
+"isPartOf":{
+
+
+"@id":
+`${SITE_URL}/#website`
+
+},
+
+
+"about":{
+
+
+"@id":
+`${SITE_URL}/#organization`
+
+},
+
+
+"publisher":{
+
+
+"@id":
+`${SITE_URL}/#organization`
+
+}
+
+
+};
+
+
+
+
+
+
+
+
+
+case "collection":
+
+
+return {
+
+
+"@context":"https://schema.org",
+
+
+"@type":"CollectionPage",
+
+
+"@id":
+`${seo.canonical}#webpage`,
+
+
+"url":
+seo.canonical,
+
+
+"name":
+seo.title,
+
+
+"description":
+seo.description,
+
+
+"isPartOf":{
+
+
+"@id":
+`${SITE_URL}/#website`
+
+},
+
+
+"publisher":{
+
+
+"@id":
+`${SITE_URL}/#organization`
+
+},
+
+
+"about":{
+
+
+"@type":"Thing",
+
+
+"name":
+seo.title.replace("| MonkeyReach","").trim()
+
+
+}
+
+
+};
+
+
+
+
+
+
+
+
+
+case "webpage":
+
+
+default:
+
+
+return {
+
+
+"@context":"https://schema.org",
+
+
+"@type":"WebPage",
+
+
+"@id":
+`${seo.canonical}#webpage`,
+
+
+"url":
+seo.canonical,
+
+
+"name":
+seo.title,
+
+
+"description":
+seo.description,
+
+
+"isPartOf":{
+
+
+"@id":
+`${SITE_URL}/#website`
+
+},
+
+
+"publisher":{
+
+
+"@id":
+`${SITE_URL}/#organization`
+
+}
+
+
+};
+
+
+
+}
+
+
 
 }
