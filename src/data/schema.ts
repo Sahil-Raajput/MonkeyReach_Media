@@ -31,6 +31,7 @@ URLS.schema.founder;
 
 
 
+
 const address = {
 
 
@@ -98,7 +99,6 @@ switch(type) {
 
 
 
-
 case "home":
 
 
@@ -116,6 +116,7 @@ return {
 
 
 
+
 {
 
 
@@ -123,20 +124,16 @@ return {
 "Organization",
 
 
-
 "@id":
 ORGANIZATION_ID,
-
 
 
 "name":
 SITE.name,
 
 
-
 "alternateName":
 SITE.alternateName,
-
 
 
 "url":
@@ -151,10 +148,8 @@ SITE.url,
 "ImageObject",
 
 
-
 "@id":
 LOGO_ID,
-
 
 
 "url":
@@ -165,10 +160,9 @@ SITE.logo
 
 
 
-
 "description":
-"MonkeyReach Media is a digital marketing agency helping businesses grow through SEO, Google Ads, Meta Ads, Social Media Marketing and performance-driven digital strategies.",
 
+"MonkeyReach Media is a digital marketing agency helping businesses grow through SEO, Google Ads, Meta Ads, Social Media Marketing and performance-driven digital strategies.",
 
 
 
@@ -184,7 +178,25 @@ FOUNDER_ID,
 
 
 "name":
-SITE.founder
+SITE.founder,
+
+
+"url":
+`${SITE.url}/about-us/`,
+
+
+"jobTitle":
+"Founder",
+
+
+"worksFor":{
+
+
+"@id":
+ORGANIZATION_ID
+
+
+}
 
 
 },
@@ -194,7 +206,6 @@ SITE.founder
 
 "email":
 SITE.email,
-
 
 
 "telephone":
@@ -241,20 +252,13 @@ address,
 
 
 
-
-"sameAs":[
-
-URLS.social.instagram,
-
-URLS.social.linkedin,
-
-URLS.social.threads
-
-]
+"sameAs":
+SITE.socialProfiles
 
 
 
 },
+
 
 
 
@@ -269,20 +273,16 @@ URLS.social.threads
 "ProfessionalService",
 
 
-
 "@id":
 SERVICE_ID,
-
 
 
 "name":
 SITE.name,
 
 
-
 "alternateName":
 SITE.alternateName,
-
 
 
 "url":
@@ -292,17 +292,29 @@ SITE.url,
 
 "image":{
 
+
 "@id":
 LOGO_ID
+
 
 },
 
 
 
-
 "description":
-"SEO and Digital Marketing Agency helping businesses increase visibility, generate leads and grow online.",
 
+"SEO and digital marketing agency helping businesses improve visibility, generate qualified leads and grow online.",
+
+
+
+"provider":{
+
+
+"@id":
+ORGANIZATION_ID
+
+
+},
 
 
 
@@ -310,7 +322,7 @@ LOGO_ID
 
 
 "@type":
-"Place",
+"AdministrativeArea",
 
 
 "name":
@@ -321,38 +333,14 @@ LOGO_ID
 
 
 
-
 "priceRange":
-"$$",
-
-
-
-
-"telephone":
-SITE.phone,
-
-
-
-"email":
-SITE.email,
-
-
-
-"address":
-address,
-
-
-
-"provider":{
-
-"@id":
-ORGANIZATION_ID
-
-}
+"$$"
 
 
 
 },
+
+
 
 
 
@@ -367,30 +355,24 @@ ORGANIZATION_ID
 "WebSite",
 
 
-
 "@id":
 WEBSITE_ID,
-
 
 
 "url":
 SITE.url,
 
 
-
 "name":
 SITE.name,
-
 
 
 "alternateName":
 SITE.alternateName,
 
 
-
 "inLanguage":
 language,
-
 
 
 "publisher":{
@@ -399,11 +381,13 @@ language,
 "@id":
 ORGANIZATION_ID
 
-}
-
-
 
 }
+
+
+
+}
+
 
 
 
@@ -412,6 +396,8 @@ ORGANIZATION_ID
 
 
 };
+
+
 
 
 
@@ -469,34 +455,40 @@ language,
 
 "isPartOf":{
 
+
 "@id":
 WEBSITE_ID
 
-},
 
+},
 
 
 
 "about":{
 
+
 "@id":
 ORGANIZATION_ID
+
 
 },
 
 
 
-
 "publisher":{
+
 
 "@id":
 ORGANIZATION_ID
+
 
 }
 
 
 
 };
+
+
 
 
 
@@ -554,34 +546,39 @@ language,
 
 "isPartOf":{
 
+
 "@id":
 WEBSITE_ID
 
-},
 
+},
 
 
 
 "about":{
 
+
 "@id":
 ORGANIZATION_ID
+
 
 },
 
 
 
-
 "publisher":{
+
 
 "@id":
 ORGANIZATION_ID
+
 
 }
 
 
 
 };
+
 
 
 
@@ -639,24 +636,147 @@ language,
 
 "isPartOf":{
 
+
 "@id":
 WEBSITE_ID
+
+
+},
+
+
+
+"publisher":{
+
+
+"@id":
+ORGANIZATION_ID
+
 
 },
 
 
 
 
-"publisher":{
+"mainEntity":{
 
-"@id":
-ORGANIZATION_ID
+
+"@type":
+"ItemList",
+
+
+"name":
+"MonkeyReach Digital Marketing Services",
+
+
+
+"itemListElement":[
+
+
+{
+
+
+"@type":
+"Service",
+
+
+"name":
+"SEO Services",
+
+
+"url":
+URLS.services.seo
+
+
+},
+
+
+
+{
+
+
+"@type":
+"Service",
+
+
+"name":
+"Google Ads Management",
+
+
+"url":
+URLS.services.googleAds
+
+
+},
+
+
+
+{
+
+
+"@type":
+"Service",
+
+
+"name":
+"Meta Ads Management",
+
+
+"url":
+URLS.services.metaAds
+
+
+},
+
+
+
+{
+
+
+"@type":
+"Service",
+
+
+"name":
+"Social Media Marketing",
+
+
+"url":
+URLS.services.socialMedia
+
+
+},
+
+
+
+{
+
+
+"@type":
+"Service",
+
+
+"name":
+"Digital Marketing Services",
+
+
+"url":
+URLS.services.digitalMarketing
+
+
+}
+
+
+
+]
+
 
 }
 
 
 
 };
+
+
 
 
 
@@ -707,10 +827,17 @@ seo.description,
 
 
 
+"serviceType":
+seo.title,
+
+
+
 "provider":{
+
 
 "@id":
 ORGANIZATION_ID
+
 
 },
 
@@ -720,7 +847,7 @@ ORGANIZATION_ID
 
 
 "@type":
-"Place",
+"AdministrativeArea",
 
 
 "name":
@@ -732,6 +859,7 @@ ORGANIZATION_ID
 
 
 };
+
 
 
 
@@ -793,18 +921,21 @@ language,
 
 "isPartOf":{
 
+
 "@id":
 WEBSITE_ID
+
 
 },
 
 
 
-
 "publisher":{
+
 
 "@id":
 ORGANIZATION_ID
+
 
 }
 

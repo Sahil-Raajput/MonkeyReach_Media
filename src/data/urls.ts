@@ -1,7 +1,10 @@
 import { SITE } from "./site";
 
 
+
 export const URLS = {
+
+
 
 
     base:
@@ -9,27 +12,39 @@ export const URLS = {
 
 
 
+
+
     pages: {
+
 
 
         home:
         `${SITE.url}/`,
 
 
+
         services:
         `${SITE.url}/services/`,
+
 
 
         about:
         `${SITE.url}/about-us/`,
 
 
+
         contact:
         `${SITE.url}/contact/`,
 
 
+
         login:
         `${SITE.url}/login/`,
+
+
+
+        founder:
+        `${SITE.url}/about-us/`,
 
 
     },
@@ -38,23 +53,32 @@ export const URLS = {
 
 
 
+
+
+
+
     services: {
+
 
 
         seo:
         `${SITE.url}/services/seo/`,
 
 
+
         googleAds:
         `${SITE.url}/services/google-ads/`,
+
 
 
         metaAds:
         `${SITE.url}/services/meta-ads/`,
 
 
+
         socialMedia:
         `${SITE.url}/services/social-media/`,
+
 
 
         digitalMarketing:
@@ -68,27 +92,36 @@ export const URLS = {
 
 
 
+
+
+
     legal: {
+
 
 
         refund:
         `${SITE.url}/refund-and-cancellation-policy/`,
 
 
+
         terms:
         `${SITE.url}/terms-conditions/`,
+
 
 
         cookie:
         `${SITE.url}/cookie-policy/`,
 
 
+
         privacy:
         `${SITE.url}/privacy-policy/`,
 
 
+
         editorial:
         `${SITE.url}/editorial-policy/`,
+
 
 
         disclaimer:
@@ -103,18 +136,24 @@ export const URLS = {
 
 
 
+
+
     assets: {
 
 
+
         logo:
-        `${SITE.url}/logos/MonkeyReach-Logo.avif`,
+        SITE.logo,
+
 
 
         favicon:
-        `${SITE.url}/logos/monkeyreach-site-icon.webp`,
+        SITE.favicon,
 
 
     },
+
+
 
 
 
@@ -125,24 +164,39 @@ export const URLS = {
     schema: {
 
 
+
         organization:
         `${SITE.url}/#organization`,
+
 
 
         website:
         `${SITE.url}/#website`,
 
 
+
         logo:
         `${SITE.url}/#logo`,
+
 
 
         service:
         `${SITE.url}/#service`,
 
 
+
         founder:
         `${SITE.url}/#founder`,
+
+
+
+        webpage:
+        `${SITE.url}/#webpage`,
+
+
+
+        breadcrumb:
+        `${SITE.url}/#breadcrumb`,
 
 
     },
@@ -153,15 +207,20 @@ export const URLS = {
 
 
 
+
+
     social: {
+
 
 
         instagram:
         "https://www.instagram.com/monkey_reach/",
 
 
+
         linkedin:
         "https://www.linkedin.com/company/monkey-reach/",
+
 
 
         threads:
@@ -176,11 +235,15 @@ export const URLS = {
 
 
 
+
+
     system: {
+
 
 
         sitemap:
         `${SITE.url}/sitemap-index.xml`,
+
 
 
         robots:
@@ -188,6 +251,10 @@ export const URLS = {
 
 
     }
+
+
+
+
 
 
 };
