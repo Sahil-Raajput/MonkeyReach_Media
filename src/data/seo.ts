@@ -155,11 +155,11 @@ export const seo: Record<string, SEOData> = {
 
 
     title:
-    "Digital Marketing Services | MonkeyReach",
+    "Online Marketing Services | MonkeyReach",
 
 
     description:
-    "Explore MonkeyReach SEO, Google Ads, Meta Ads, Local SEO, Website Development and digital marketing services.",
+    "Explore MonkeyReach SEO, Google Ads, Meta Ads, Local SEO, Website Development and online marketing services.",
 
 
     ogType:
