@@ -10,7 +10,6 @@ const LOGO =
 
 
 
-
 export function getSchema(
     type: SEOData["schema"],
     seo: SEOData
@@ -60,6 +59,9 @@ SITE_URL,
 
 "@type":"ImageObject",
 
+"@id":
+`${SITE_URL}/#logo`,
+
 "url":LOGO
 
 },
@@ -102,6 +104,7 @@ SITE_URL,
 
 
 
+
 {
 
 
@@ -121,7 +124,10 @@ SITE_URL,
 
 
 "image":
-LOGO,
+{
+"@id":
+`${SITE_URL}/#logo`
+},
 
 
 "description":
@@ -170,11 +176,11 @@ LOGO,
 "addressCountry":
 "IN"
 
-
 }
 
 
 },
+
 
 
 
@@ -203,7 +209,6 @@ seo.language,
 
 "publisher":{
 
-
 "@id":
 `${SITE_URL}/#organization`
 
@@ -218,8 +223,6 @@ seo.language,
 
 
 };
-
-
 
 
 
@@ -255,8 +258,19 @@ seo.title,
 seo.description,
 
 
-"isPartOf":{
+"inLanguage":
+seo.language,
 
+
+"mainEntityOfPage":{
+
+"@id":
+seo.canonical
+
+},
+
+
+"isPartOf":{
 
 "@id":
 `${SITE_URL}/#website`
@@ -266,7 +280,6 @@ seo.description,
 
 "about":{
 
-
 "@id":
 `${SITE_URL}/#organization`
 
@@ -275,7 +288,6 @@ seo.description,
 
 "publisher":{
 
-
 "@id":
 `${SITE_URL}/#organization`
 
@@ -283,7 +295,6 @@ seo.description,
 
 
 };
-
 
 
 
@@ -320,8 +331,19 @@ seo.title,
 seo.description,
 
 
-"isPartOf":{
+"inLanguage":
+seo.language,
 
+
+"mainEntityOfPage":{
+
+"@id":
+seo.canonical
+
+},
+
+
+"isPartOf":{
 
 "@id":
 `${SITE_URL}/#website`
@@ -331,7 +353,6 @@ seo.description,
 
 "about":{
 
-
 "@id":
 `${SITE_URL}/#organization`
 
@@ -339,7 +360,6 @@ seo.description,
 
 
 "publisher":{
-
 
 "@id":
 `${SITE_URL}/#organization`
@@ -385,8 +405,19 @@ seo.title,
 seo.description,
 
 
-"isPartOf":{
+"inLanguage":
+seo.language,
 
+
+"mainEntityOfPage":{
+
+"@id":
+seo.canonical
+
+},
+
+
+"isPartOf":{
 
 "@id":
 `${SITE_URL}/#website`
@@ -396,24 +427,11 @@ seo.description,
 
 "publisher":{
 
-
 "@id":
 `${SITE_URL}/#organization`
 
-},
-
-
-"about":{
-
-
-"@type":"Thing",
-
-
-"name":
-seo.title.replace("| MonkeyReach","").trim()
-
-
 }
+
 
 
 };
@@ -457,8 +475,19 @@ seo.title,
 seo.description,
 
 
-"isPartOf":{
+"inLanguage":
+seo.language,
 
+
+"mainEntityOfPage":{
+
+"@id":
+seo.canonical
+
+},
+
+
+"isPartOf":{
 
 "@id":
 `${SITE_URL}/#website`
@@ -467,7 +496,6 @@ seo.description,
 
 
 "publisher":{
-
 
 "@id":
 `${SITE_URL}/#organization`
