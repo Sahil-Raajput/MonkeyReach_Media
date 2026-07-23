@@ -1,8 +1,4 @@
-const SITE_URL = "https://monkeyreach.com";
-
-const DEFAULT_IMAGE =
-    `${SITE_URL}/logos/MonkeyReach-Logo.avif`;
-
+import { SITE } from "./site";
 
 
 export interface SEOData {
@@ -14,7 +10,7 @@ export interface SEOData {
 
     description: string;
 
-    canonical?: string;
+    canonical: string;
 
     robots?: string;
 
@@ -37,8 +33,8 @@ export interface SEOData {
     // Twitter
 
     twitterCard?:
-        "summary" |
-        "summary_large_image";
+        | "summary"
+        | "summary_large_image";
 
     twitterTitle?: string;
 
@@ -60,13 +56,14 @@ export interface SEOData {
 
 
 
-    // Schema Controller
+    // Schema
 
     schema:
         | "home"
         | "about"
         | "contact"
         | "collection"
+        | "service"
         | "webpage";
 
 }
@@ -75,7 +72,7 @@ export interface SEOData {
 
 
 
-export const seo: Record<string, SEOData> = {
+export const seo: Record<string, Partial<SEOData>> = {
 
 
 
@@ -83,11 +80,11 @@ export const seo: Record<string, SEOData> = {
 
 
     title:
-    "MonkeyReach | SEO & Digital Marketing Agency",
+    `${SITE.name} | SEO & Digital Marketing Agency`,
 
 
     description:
-    "MonkeyReach helps businesses grow through SEO, Google Ads, Meta Ads, Social Media Marketing, Local SEO, Website Development, and performance-driven digital marketing strategies.",
+    "MonkeyReach Media helps businesses grow through SEO, Google Ads, Meta Ads, Social Media Marketing, Local SEO, Website Development, and performance-driven digital marketing strategies.",
 
 
     ogType:
@@ -103,15 +100,17 @@ export const seo: Record<string, SEOData> = {
 
 
 
+
+
 "/about-us/": {
 
 
     title:
-    "About MonkeyReach | Digital Marketing Agency",
+    `About ${SITE.name} | Digital Marketing Agency`,
 
 
     description:
-    "Learn about MonkeyReach and how we help businesses grow through SEO, paid advertising, website development and digital marketing.",
+    "Learn about MonkeyReach Media and how we help businesses grow through SEO, paid advertising, website development and digital marketing.",
 
 
     ogType:
@@ -127,15 +126,17 @@ export const seo: Record<string, SEOData> = {
 
 
 
+
+
 "/contact/": {
 
 
     title:
-    "Contact MonkeyReach | Digital Marketing Agency",
+    `Contact ${SITE.name} | Digital Marketing Agency`,
 
 
     description:
-    "Contact MonkeyReach for SEO, Google Ads, Meta Ads, Local SEO and digital marketing services.",
+    "Contact MonkeyReach Media for SEO, Google Ads, Meta Ads, Local SEO and digital marketing services.",
 
 
     ogType:
@@ -151,15 +152,17 @@ export const seo: Record<string, SEOData> = {
 
 
 
+
+
 "/services/": {
 
 
     title:
-    "Online Marketing Services | MonkeyReach",
+    `Digital Marketing Services | ${SITE.name}`,
 
 
     description:
-    "Explore MonkeyReach SEO, Google Ads, Meta Ads, Local SEO, Website Development and online marketing services.",
+    "Explore MonkeyReach Media SEO, Google Ads, Meta Ads, Local SEO, Website Development and digital marketing services.",
 
 
     ogType:
@@ -170,6 +173,8 @@ export const seo: Record<string, SEOData> = {
     "collection"
 
 },
+
+
 
 
 
@@ -179,11 +184,11 @@ export const seo: Record<string, SEOData> = {
 
 
     title:
-    "Locations We Serve | MonkeyReach",
+    `Locations We Serve | ${SITE.name}`,
 
 
     description:
-    "Explore locations where MonkeyReach provides SEO and digital marketing services.",
+    "Explore locations where MonkeyReach Media provides SEO and digital marketing services.",
 
 
     ogType:
@@ -194,6 +199,8 @@ export const seo: Record<string, SEOData> = {
     "collection"
 
 },
+
+
 
 
 
@@ -203,11 +210,11 @@ export const seo: Record<string, SEOData> = {
 
 
     title:
-    "Industries We Serve | MonkeyReach",
+    `Industries We Serve | ${SITE.name}`,
 
 
     description:
-    "Discover industries that use MonkeyReach SEO, advertising and digital marketing services.",
+    "Discover industries that use MonkeyReach Media SEO, advertising and digital marketing services.",
 
 
     ogType:
@@ -223,25 +230,25 @@ export const seo: Record<string, SEOData> = {
 
 
 
+
+
 "/privacy-policy/": {
 
 
     title:
-    "Privacy Policy | MonkeyReach",
+    `Privacy Policy | ${SITE.name}`,
 
 
     description:
-    "Read MonkeyReach privacy policy.",
-
-
-    ogType:
-    "website",
+    "Read MonkeyReach Media privacy policy.",
 
 
     schema:
     "webpage"
 
 },
+
+
 
 
 
@@ -251,15 +258,11 @@ export const seo: Record<string, SEOData> = {
 
 
     title:
-    "Cookie Policy | MonkeyReach",
+    `Cookie Policy | ${SITE.name}`,
 
 
     description:
-    "Read MonkeyReach cookie policy.",
-
-
-    ogType:
-    "website",
+    "Read MonkeyReach Media cookie policy.",
 
 
     schema:
@@ -271,25 +274,25 @@ export const seo: Record<string, SEOData> = {
 
 
 
-"/terms-and-conditions/": {
+
+
+"/terms-conditions/": {
 
 
     title:
-    "Terms & Conditions | MonkeyReach",
+    `Terms & Conditions | ${SITE.name}`,
 
 
     description:
-    "Read MonkeyReach terms and conditions.",
-
-
-    ogType:
-    "website",
+    "Read MonkeyReach Media terms and conditions.",
 
 
     schema:
     "webpage"
 
 },
+
+
 
 
 
@@ -299,21 +302,19 @@ export const seo: Record<string, SEOData> = {
 
 
     title:
-    "Editorial Policy | MonkeyReach",
+    `Editorial Policy | ${SITE.name}`,
 
 
     description:
-    "Learn about MonkeyReach editorial standards and publishing guidelines.",
-
-
-    ogType:
-    "website",
+    "Learn about MonkeyReach Media editorial standards and publishing guidelines.",
 
 
     schema:
     "webpage"
 
 },
+
+
 
 
 
@@ -323,15 +324,11 @@ export const seo: Record<string, SEOData> = {
 
 
     title:
-    "Disclaimer | MonkeyReach",
+    `Disclaimer | ${SITE.name}`,
 
 
     description:
-    "Read MonkeyReach disclaimer.",
-
-
-    ogType:
-    "website",
+    "Read MonkeyReach Media disclaimer.",
 
 
     schema:
@@ -343,19 +340,43 @@ export const seo: Record<string, SEOData> = {
 
 
 
+
+
 "/refund-and-cancellation-policy/": {
 
 
     title:
-    "Refund & Cancellation Policy | MonkeyReach",
+    `Refund & Cancellation Policy | ${SITE.name}`,
 
 
     description:
-    "Read MonkeyReach refund and cancellation policy.",
+    "Read MonkeyReach Media refund and cancellation policy.",
 
 
-    ogType:
-    "website",
+    schema:
+    "webpage"
+
+},
+
+
+
+
+
+
+
+"/404/": {
+
+
+    title:
+    `Page Not Found | ${SITE.name}`,
+
+
+    description:
+    "The page you are looking for does not exist.",
+
+
+    robots:
+    "noindex, follow",
 
 
     schema:
@@ -366,6 +387,8 @@ export const seo: Record<string, SEOData> = {
 
 
 };
+
+
 
 
 
@@ -400,7 +423,11 @@ pathname + "/";
 
 
 
+
+
 const page = seo[cleanPath];
+
+
 
 
 
@@ -411,146 +438,221 @@ return {
 
 
 title:
+
 page?.title ??
-"MonkeyReach | Digital Marketing Agency",
+
+`${SITE.name} | Digital Marketing Agency`,
+
+
+
 
 
 
 
 description:
+
 page?.description ??
-"MonkeyReach helps businesses grow through digital marketing.",
+
+`${SITE.name} helps businesses grow through SEO, advertising and digital marketing.`,
+
+
+
 
 
 
 
 canonical:
+
 page?.canonical ??
-`${SITE_URL}${cleanPath === "/" ? "" : cleanPath}`,
+
+`${SITE.url}${cleanPath === "/" ? "" : cleanPath}`,
+
+
+
 
 
 
 
 robots:
+
 page?.robots ??
+
 "index, follow, max-image-preview:large",
 
 
 
 
 
-// Theme
+
 
 themeColor:
+
 page?.themeColor ??
+
 "#050505",
 
 
 
 
 
-// Open Graph
+
 
 ogTitle:
+
 page?.ogTitle ??
+
 page?.title ??
-"MonkeyReach",
+
+SITE.name,
+
+
+
 
 
 
 
 ogDescription:
+
 page?.ogDescription ??
+
 page?.description ??
+
 "",
+
+
+
 
 
 
 
 ogImage:
+
 page?.ogImage ??
-DEFAULT_IMAGE,
+
+SITE.logo,
+
+
+
 
 
 
 
 ogType:
+
 page?.ogType ??
+
 "website",
 
 
 
 
+
+
+
 ogLocale:
+
 page?.ogLocale ??
-"en_US",
+
+SITE.locale,
 
 
 
 
 
-// Twitter
+
 
 twitterCard:
+
 page?.twitterCard ??
+
 "summary_large_image",
 
 
 
 
+
+
+
 twitterTitle:
+
 page?.twitterTitle ??
+
 page?.title ??
-"MonkeyReach",
+
+SITE.name,
+
+
+
 
 
 
 
 twitterDescription:
+
 page?.twitterDescription ??
+
 page?.description ??
+
 "",
 
 
 
 
+
+
+
 twitterImage:
+
 page?.twitterImage ??
-DEFAULT_IMAGE,
+
+SITE.logo,
 
 
 
 
 
 
-// General
 
 author:
+
 page?.author ??
-"MonkeyReach",
+
+SITE.name,
+
+
+
 
 
 
 
 siteName:
+
 page?.siteName ??
-"MonkeyReach",
+
+SITE.name,
+
+
+
 
 
 
 
 language:
+
 page?.language ??
-"en",
+
+SITE.language,
 
 
 
 
 
-// Schema
+
 
 schema:
+
 page?.schema ??
+
 "webpage"
 
 

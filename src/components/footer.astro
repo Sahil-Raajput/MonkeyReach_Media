@@ -1,5 +1,6 @@
 ---
 import "../styles/footer.css";
+import { URLS } from "../data/urls";
 ---
 
 <footer class="footer">
@@ -9,62 +10,102 @@ import "../styles/footer.css";
 
         <div class="footer-brand">
 
-            <a href="/" class="footer-logo">
+
+            <a 
+                href={URLS.pages.home} 
+                class="footer-logo"
+            >
 
                 <img 
-                    src="/logos/MonkeyReach-Logo.avif"
-                    alt="MonkeyReach Logo"
+                    src={URLS.assets.logo}
+                    alt="MonkeyReach Digital Marketing Agency Logo"
                 />
 
             </a>
 
 
+
+
+
             <p class="footer-description">
 
-                Data-driven digital marketing solutions helping businesses grow through SEO, paid advertising, web development, and strategic online growth.
+                MonkeyReach helps businesses grow through SEO, Google Ads, Meta Ads, Local SEO, website development, and performance-driven digital marketing strategies.
 
             </p>
+
 
         </div>
 
 
 
 
+
+
+
         <nav class="footer-nav">
 
-            <a href="/refund-and-cancellation-policy">
+
+
+            <a href={URLS.legal.refund}>
                 Refund & Cancellation Policy
             </a>
 
-            <a href="/terms-conditions">
+
+
+
+            <a href={URLS.legal.terms}>
                 Terms & Conditions
             </a>
 
-            <a href="/cookie-policy">
+
+
+
+            <a href={URLS.legal.cookie}>
                 Cookie Policy
             </a>
 
-            <a href="/privacy-policy">
+
+
+
+            <a href={URLS.legal.privacy}>
                 Privacy Policy
             </a>
 
-            <a href="/editorial-policy">
+
+
+
+            <a href={URLS.legal.editorial}>
                 Editorial Policy
             </a>
 
-            <a href="/disclaimer">
+
+
+
+            <a href={URLS.legal.disclaimer}>
                 Disclaimer
             </a>
 
+
+
         </nav>
+
+
+
+
+
+
 
         <p class="footer-copy">
 
-            © {new Date().getFullYear()} MonkeyReach. All rights reserved.
+            © {new Date().getFullYear()} {URLS.base.replace("https://","").replace("/","")} . All rights reserved.
 
         </p>
 
 
+
+
+
     </div>
+
 
 </footer>

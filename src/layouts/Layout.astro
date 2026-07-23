@@ -4,21 +4,115 @@ import Footer from "../components/footer.astro";
 
 import "../styles/global.css";
 
-
 import { getSEO } from "../data/seo";
 import { getSchema } from "../data/schema";
+import { URLS } from "../data/urls";
+import { SITE } from "../data/site";
 
 
 
-// Current page SEO
+interface Props {
 
-const pageSEO = getSEO(Astro.url.pathname);
+    title?: string;
+
+    description?: string;
+
+    robots?: string;
+
+    canonical?: string;
+
+
+    schemaType?:
+        | "home"
+        | "about"
+        | "contact"
+        | "collection"
+        | "service"
+        | "webpage";
+
+}
 
 
 
-// Schema
+const props = Astro.props;
 
-const schema = getSchema(pageSEO.schema);
+
+
+const defaultSEO =
+getSEO(Astro.url.pathname);
+
+
+
+const pageSEO = {
+
+
+    ...defaultSEO,
+
+
+    title:
+    props.title ??
+    defaultSEO.title ??
+    SITE.name,
+
+
+    description:
+    props.description ??
+    defaultSEO.description ??
+    "",
+
+
+
+    robots:
+    props.robots ??
+    defaultSEO.robots ??
+    "index, follow",
+
+
+
+    canonical:
+    props.canonical ??
+    defaultSEO.canonical ??
+    Astro.url.href,
+
+
+
+    schema:
+    props.schemaType ??
+    defaultSEO.schema ??
+    "webpage"
+
+
+
+};
+
+
+
+
+
+const schema =
+getSchema(
+    pageSEO.schema,
+    pageSEO
+);
+
+
+
+const isNoIndex =
+pageSEO.robots.includes("noindex");
+
+
+
+
+
+const ogImage =
+pageSEO.ogImage ??
+URLS.assets.logo;
+
+
+
+const twitterImage =
+pageSEO.twitterImage ??
+URLS.assets.logo;
 
 ---
 
@@ -28,10 +122,11 @@ const schema = getSchema(pageSEO.schema);
 
 <!doctype html>
 
-<html lang={pageSEO.language}>
+<html lang={pageSEO.language ?? SITE.language}>
 
 
 <head>
+
 
 
 <meta charset="UTF-8" />
@@ -46,13 +141,10 @@ content="width=device-width, initial-scale=1"
 
 
 
-
-<!-- Primary SEO -->
-
-
 <title>
 {pageSEO.title}
 </title>
+
 
 
 
@@ -63,6 +155,7 @@ content={pageSEO.description}
 
 
 
+
 <meta
 name="robots"
 content={pageSEO.robots}
@@ -70,17 +163,20 @@ content={pageSEO.robots}
 
 
 
+
 <meta
 name="author"
-content={pageSEO.author}
+content={pageSEO.author ?? SITE.name}
 />
+
 
 
 
 <meta
 name="theme-color"
-content={pageSEO.themeColor}
+content={SITE.themeColor}
 />
+
 
 
 
@@ -93,34 +189,35 @@ content="Astro"
 
 
 
-<!-- Canonical -->
 
+{
+!isNoIndex &&
 
 <link
 rel="canonical"
 href={pageSEO.canonical}
 />
 
+}
 
 
 
 
-<!-- Favicon -->
 
 
 <link
 rel="icon"
 type="image/webp"
-href="/logos/monkeyreach-site-icon.webp"
+href={URLS.assets.favicon}
 />
+
 
 
 
 <link
 rel="apple-touch-icon"
-href="/logos/monkeyreach-site-icon.webp"
+href={URLS.assets.favicon}
 />
-
 
 
 
@@ -131,23 +228,24 @@ href="/logos/monkeyreach-site-icon.webp"
 <!-- Open Graph -->
 
 
+
 <meta
 property="og:type"
-content={pageSEO.ogType}
+content={pageSEO.ogType ?? "website"}
 />
 
 
 
 <meta
 property="og:title"
-content={pageSEO.ogTitle}
+content={pageSEO.ogTitle ?? pageSEO.title}
 />
 
 
 
 <meta
 property="og:description"
-content={pageSEO.ogDescription}
+content={pageSEO.ogDescription ?? pageSEO.description}
 />
 
 
@@ -161,21 +259,21 @@ content={pageSEO.canonical}
 
 <meta
 property="og:site_name"
-content={pageSEO.siteName}
+content={SITE.name}
 />
 
 
 
 <meta
 property="og:image"
-content={pageSEO.ogImage}
+content={ogImage}
 />
 
 
 
 <meta
 property="og:locale"
-content={pageSEO.ogLocale}
+content={SITE.locale}
 />
 
 
@@ -184,33 +282,50 @@ content={pageSEO.ogLocale}
 
 
 
-<!-- Twitter Card -->
+
+
+<!-- Twitter -->
+
 
 
 <meta
 name="twitter:card"
-content={pageSEO.twitterCard}
+content={pageSEO.twitterCard ?? "summary_large_image"}
 />
 
 
 
 <meta
 name="twitter:title"
-content={pageSEO.twitterTitle}
+content={pageSEO.twitterTitle ?? pageSEO.title}
 />
 
 
 
 <meta
 name="twitter:description"
-content={pageSEO.twitterDescription}
+content={pageSEO.twitterDescription ?? pageSEO.description}
 />
 
 
 
 <meta
 name="twitter:image"
-content={pageSEO.twitterImage}
+content={twitterImage}
+/>
+
+
+
+<meta
+name="twitter:site"
+content="@monkey_reach"
+/>
+
+
+
+<meta
+name="twitter:creator"
+content="@monkey_reach"
 />
 
 
@@ -219,13 +334,20 @@ content={pageSEO.twitterImage}
 
 
 
-<!-- Structured Data -->
+<!-- Schema -->
 
+
+{
+!isNoIndex &&
 
 <script
 type="application/ld+json"
-set:html={JSON.stringify(schema)}
+set:html={
+JSON.stringify(schema)
+}
 />
+
+}
 
 
 
@@ -238,6 +360,7 @@ set:html={JSON.stringify(schema)}
 
 
 <body>
+
 
 
 <Header />
@@ -257,7 +380,6 @@ set:html={JSON.stringify(schema)}
 
 
 </body>
-
 
 
 </html>

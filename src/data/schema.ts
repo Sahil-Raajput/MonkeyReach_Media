@@ -1,19 +1,94 @@
 import type { SEOData } from "./seo";
 
+import { SITE } from "./site";
 
-const SITE_URL = "https://monkeyreach.com";
+import { URLS } from "./urls";
 
 
-const LOGO =
-`${SITE_URL}/logos/MonkeyReach-Logo.avif`;
+
+
+
+const ORGANIZATION_ID =
+URLS.schema.organization;
+
+
+const WEBSITE_ID =
+URLS.schema.website;
+
+
+const LOGO_ID =
+URLS.schema.logo;
+
+
+const SERVICE_ID =
+URLS.schema.service;
+
+
+const FOUNDER_ID =
+URLS.schema.founder;
+
+
+
+
+
+const address = {
+
+
+    "@type":
+    "PostalAddress",
+
+
+    "streetAddress":
+    SITE.address.street,
+
+
+    "addressLocality":
+    SITE.address.city,
+
+
+    "addressRegion":
+    SITE.address.state,
+
+
+    "postalCode":
+    SITE.address.postalCode,
+
+
+    "addressCountry":
+    SITE.address.country
+
+
+};
+
+
+
+
+
 
 
 
 
 export function getSchema(
+
     type: SEOData["schema"],
+
     seo: SEOData
+
 ) {
+
+
+
+const canonical =
+seo?.canonical ?? SITE.url;
+
+
+
+const language =
+seo?.language ?? SITE.language;
+
+
+
+
 
 
 
@@ -21,80 +96,137 @@ switch(type) {
 
 
 
+
+
+
 case "home":
+
 
 
 return {
 
 
-"@context":"https://schema.org",
+"@context":
+"https://schema.org",
+
 
 
 "@graph":[
 
 
+
+
 {
 
 
-"@type":"Organization",
+"@type":
+"Organization",
+
 
 
 "@id":
-`${SITE_URL}/#organization`,
+ORGANIZATION_ID,
+
 
 
 "name":
-"MonkeyReach Media",
+SITE.name,
+
 
 
 "alternateName":
-"MonkeyReach",
+SITE.alternateName,
+
 
 
 "url":
-SITE_URL,
+SITE.url,
+
 
 
 "logo":{
 
-"@type":"ImageObject",
+
+"@type":
+"ImageObject",
+
+
 
 "@id":
-`${SITE_URL}/#logo`,
+LOGO_ID,
 
-"url":LOGO
+
+
+"url":
+SITE.logo
+
 
 },
 
 
+
+
 "description":
-"MonkeyReach is a digital marketing agency helping businesses grow through SEO, Google Ads, Meta Advertising, Social Media Marketing and performance-driven digital strategies.",
+"MonkeyReach Media is a digital marketing agency helping businesses grow through SEO, Google Ads, Meta Ads, Social Media Marketing and performance-driven digital strategies.",
+
+
 
 
 "founder":{
 
-"@type":"Person",
 
-"name":"Sahil Raajput"
+"@type":
+"Person",
+
+
+"@id":
+FOUNDER_ID,
+
+
+"name":
+SITE.founder
+
 
 },
 
 
+
+
 "email":
-"contact@monkeyreach.com",
+SITE.email,
+
 
 
 "telephone":
-"+91-9053556090",
+SITE.phone,
 
 
-"sameAs":[
 
-"https://www.instagram.com/monkey_reach/",
 
-"https://www.linkedin.com/company/monkey-reach/",
+"contactPoint":{
 
-"https://www.threads.com/@monkey_reach"
+
+"@type":
+"ContactPoint",
+
+
+"telephone":
+SITE.phone,
+
+
+"email":
+SITE.email,
+
+
+"contactType":
+"customer support",
+
+
+"availableLanguage":[
+
+"English",
+
+"Hindi"
 
 ]
 
@@ -104,79 +236,120 @@ SITE_URL,
 
 
 
-
-{
-
-
-"@type":"ProfessionalService",
+"address":
+address,
 
 
-"@id":
-`${SITE_URL}/#service`,
 
 
-"name":
-"MonkeyReach",
+"sameAs":[
+
+URLS.social.instagram,
+
+URLS.social.linkedin,
+
+URLS.social.threads
+
+]
 
 
-"url":
-SITE_URL,
 
-
-"image":
-{
-"@id":
-`${SITE_URL}/#logo`
 },
 
 
+
+
+
+
+
+{
+
+
+"@type":
+"ProfessionalService",
+
+
+
+"@id":
+SERVICE_ID,
+
+
+
+"name":
+SITE.name,
+
+
+
+"alternateName":
+SITE.alternateName,
+
+
+
+"url":
+SITE.url,
+
+
+
+"image":{
+
+"@id":
+LOGO_ID
+
+},
+
+
+
+
 "description":
-"SEO and Digital Marketing Agency serving businesses worldwide.",
+"SEO and Digital Marketing Agency helping businesses increase visibility, generate leads and grow online.",
 
 
-"areaServed":
-"Worldwide",
+
+
+"areaServed":{
+
+
+"@type":
+"Place",
+
+
+"name":
+"Worldwide"
+
+
+},
+
+
 
 
 "priceRange":
 "$$",
 
 
+
+
 "telephone":
-"+91-9053556090",
+SITE.phone,
+
 
 
 "email":
-"contact@monkeyreach.com",
+SITE.email,
 
 
 
-"address":{
+"address":
+address,
 
 
-"@type":"PostalAddress",
 
+"provider":{
 
-"streetAddress":
-"Kishan Garh Road",
-
-
-"addressLocality":
-"Kurukshetra",
-
-
-"addressRegion":
-"Haryana",
-
-
-"postalCode":
-"136135",
-
-
-"addressCountry":
-"IN"
+"@id":
+ORGANIZATION_ID
 
 }
+
 
 
 },
@@ -185,37 +358,53 @@ SITE_URL,
 
 
 
+
+
 {
 
 
-"@type":"WebSite",
+"@type":
+"WebSite",
+
 
 
 "@id":
-`${SITE_URL}/#website`,
+WEBSITE_ID,
+
 
 
 "url":
-SITE_URL,
+SITE.url,
+
 
 
 "name":
-"MonkeyReach",
+SITE.name,
+
+
+
+"alternateName":
+SITE.alternateName,
+
 
 
 "inLanguage":
-seo.language,
+language,
+
 
 
 "publisher":{
 
+
 "@id":
-`${SITE_URL}/#organization`
+ORGANIZATION_ID
 
 }
 
 
+
 }
+
 
 
 
@@ -223,6 +412,12 @@ seo.language,
 
 
 };
+
+
+
+
+
+
 
 
 
@@ -233,68 +428,80 @@ seo.language,
 case "about":
 
 
+
 return {
 
 
-"@context":"https://schema.org",
+"@context":
+"https://schema.org",
 
 
-"@type":"AboutPage",
+
+"@type":
+"AboutPage",
+
 
 
 "@id":
-`${seo.canonical}#webpage`,
+`${canonical}#webpage`,
+
 
 
 "url":
-seo.canonical,
+canonical,
+
 
 
 "name":
 seo.title,
 
 
+
 "description":
 seo.description,
 
 
+
 "inLanguage":
-seo.language,
+language,
 
-
-"mainEntityOfPage":{
-
-"@id":
-seo.canonical
-
-},
 
 
 "isPartOf":{
 
 "@id":
-`${SITE_URL}/#website`
+WEBSITE_ID
 
 },
+
+
 
 
 "about":{
 
 "@id":
-`${SITE_URL}/#organization`
+ORGANIZATION_ID
 
 },
+
+
 
 
 "publisher":{
 
 "@id":
-`${SITE_URL}/#organization`
+ORGANIZATION_ID
 
 }
 
 
+
 };
+
+
+
+
+
 
 
 
@@ -306,68 +513,79 @@ seo.canonical
 case "contact":
 
 
+
 return {
 
 
-"@context":"https://schema.org",
+"@context":
+"https://schema.org",
 
 
-"@type":"ContactPage",
+
+"@type":
+"ContactPage",
+
 
 
 "@id":
-`${seo.canonical}#webpage`,
+`${canonical}#webpage`,
+
 
 
 "url":
-seo.canonical,
+canonical,
+
 
 
 "name":
 seo.title,
 
 
+
 "description":
 seo.description,
 
 
+
 "inLanguage":
-seo.language,
+language,
 
-
-"mainEntityOfPage":{
-
-"@id":
-seo.canonical
-
-},
 
 
 "isPartOf":{
 
 "@id":
-`${SITE_URL}/#website`
+WEBSITE_ID
 
 },
+
+
 
 
 "about":{
 
 "@id":
-`${SITE_URL}/#organization`
+ORGANIZATION_ID
 
 },
+
+
 
 
 "publisher":{
 
 "@id":
-`${SITE_URL}/#organization`
+ORGANIZATION_ID
 
 }
 
 
+
 };
+
+
+
+
 
 
 
@@ -380,55 +598,59 @@ seo.canonical
 case "collection":
 
 
+
 return {
 
 
-"@context":"https://schema.org",
+"@context":
+"https://schema.org",
 
 
-"@type":"CollectionPage",
+
+"@type":
+"CollectionPage",
+
 
 
 "@id":
-`${seo.canonical}#webpage`,
+`${canonical}#webpage`,
+
 
 
 "url":
-seo.canonical,
+canonical,
+
 
 
 "name":
 seo.title,
 
 
+
 "description":
 seo.description,
 
 
+
 "inLanguage":
-seo.language,
+language,
 
-
-"mainEntityOfPage":{
-
-"@id":
-seo.canonical
-
-},
 
 
 "isPartOf":{
 
 "@id":
-`${SITE_URL}/#website`
+WEBSITE_ID
 
 },
+
+
 
 
 "publisher":{
 
 "@id":
-`${SITE_URL}/#organization`
+ORGANIZATION_ID
 
 }
 
@@ -444,63 +666,148 @@ seo.canonical
 
 
 
-case "webpage":
 
 
-default:
+
+
+case "service":
+
 
 
 return {
 
 
-"@context":"https://schema.org",
+"@context":
+"https://schema.org",
 
 
-"@type":"WebPage",
+
+"@type":
+"Service",
+
 
 
 "@id":
-`${seo.canonical}#webpage`,
+`${canonical}#service`,
+
 
 
 "url":
-seo.canonical,
+canonical,
+
 
 
 "name":
 seo.title,
 
 
+
 "description":
 seo.description,
 
 
-"inLanguage":
-seo.language,
 
-
-"mainEntityOfPage":{
+"provider":{
 
 "@id":
-seo.canonical
+ORGANIZATION_ID
 
 },
+
+
+
+"areaServed":{
+
+
+"@type":
+"Place",
+
+
+"name":
+"Worldwide"
+
+
+}
+
+
+
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+case "webpage":
+
+
+
+default:
+
+
+
+return {
+
+
+"@context":
+"https://schema.org",
+
+
+
+"@type":
+"WebPage",
+
+
+
+"@id":
+`${canonical}#webpage`,
+
+
+
+"url":
+canonical,
+
+
+
+"name":
+seo.title,
+
+
+
+"description":
+seo.description,
+
+
+
+"inLanguage":
+language,
+
 
 
 "isPartOf":{
 
 "@id":
-`${SITE_URL}/#website`
+WEBSITE_ID
 
 },
+
+
 
 
 "publisher":{
 
 "@id":
-`${SITE_URL}/#organization`
+ORGANIZATION_ID
 
 }
+
 
 
 };
