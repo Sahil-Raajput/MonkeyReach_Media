@@ -1,201 +1,41 @@
 ---
 import Header from "../components/header.astro";
 import Footer from "../components/footer.astro";
+
 import "../styles/global.css";
 
 
-const siteUrl = "https://monkeyreach.com";
+import { getSEO } from "../data/seo";
+import { getSchema } from "../data/schema";
 
 
-const pathname = Astro.url.pathname;
 
+// Current page SEO
 
-// Remove trailing slash except homepage
-const cleanPath =
-    pathname === "/"
-    ? ""
-    : pathname.replace(/\/$/, "");
+const pageSEO = getSEO(Astro.url.pathname);
 
 
-const canonical = `${siteUrl}${cleanPath}`;
 
+// Schema
 
-
-const title = "MonkeyReach | SEO & Digital Marketing Agency";
-
-
-const description =
-    "MonkeyReach helps businesses grow through SEO, Google Ads, Meta Ads, Social Media Marketing, Local SEO, Website Development, and performance-driven digital marketing strategies.";
-
-
-
-const logo =
-    `${siteUrl}/logos/MonkeyReach-Logo.avif`;
-
-const favicon =
-    "/logos/monkeyreach-site-icon.webp";
-
-
-
-const schema = {
-
-    "@context": "https://schema.org",
-
-    "@graph": [
-
-        {
-
-            "@type": "Organization",
-
-            "@id": `${siteUrl}/#organization`,
-
-            name: "MonkeyReach Media",
-
-            alternateName: "MonkeyReach",
-
-            url: siteUrl,
-
-            logo: {
-
-                "@type": "ImageObject",
-
-                url: logo
-
-            },
-
-            image: logo,
-
-
-            description:
-                "MonkeyReach is a digital marketing agency helping businesses grow through SEO, Google Ads, Meta Advertising, Social Media Marketing and performance-driven digital strategies.",
-
-
-            founder: {
-
-                "@type": "Person",
-
-                name: "Sahil Raajput"
-
-            },
-
-
-            email:
-                "contact@monkeyreach.com",
-
-
-            telephone:
-                "+91-9053556090",
-
-
-            sameAs: [
-
-                "https://www.linkedin.com/company/monkeyreach",
-
-                "https://www.instagram.com/monkeyreach",
-
-                "https://www.facebook.com/monkeyreach"
-
-            ]
-
-        },
-
-
-        {
-
-            "@type": "ProfessionalService",
-
-            "@id": `${siteUrl}/#service`,
-
-            name: "MonkeyReach",
-
-            url: siteUrl,
-
-            image: logo,
-
-
-            description:
-                "SEO and Digital Marketing Agency serving businesses worldwide.",
-
-
-            areaServed:
-                "Worldwide",
-
-
-            priceRange:
-                "$$",
-
-
-            telephone:
-                "+91-9053556090",
-
-
-            email:
-                "contact@monkeyreach.com",
-
-
-            address: {
-
-                "@type": "PostalAddress",
-
-                streetAddress:
-                    "Kishan Garh Road",
-
-                addressLocality:
-                    "Kurukshetra",
-
-                addressRegion:
-                    "Haryana",
-
-                postalCode:
-                    "136135",
-
-                addressCountry:
-                    "IN"
-
-            }
-
-        },
-
-
-        {
-
-            "@type": "WebSite",
-
-            "@id": `${siteUrl}/#website`,
-
-            url: siteUrl,
-
-            name:
-                "MonkeyReach",
-
-            inLanguage:
-                "en",
-
-            publisher: {
-
-                "@id":
-                `${siteUrl}/#organization`
-
-            }
-
-        }
-
-
-    ]
-
-};
+const schema = getSchema(pageSEO.schema);
 
 ---
 
 
+
+
+
 <!doctype html>
 
-<html lang="en">
+<html lang={pageSEO.language}>
+
 
 <head>
 
 
 <meta charset="UTF-8" />
+
 
 
 <meta
@@ -205,34 +45,41 @@ content="width=device-width, initial-scale=1"
 
 
 
-<title>{title}</title>
+
+
+<!-- Primary SEO -->
+
+
+<title>
+{pageSEO.title}
+</title>
 
 
 
 <meta
 name="description"
-content={description}
+content={pageSEO.description}
 />
 
 
 
 <meta
 name="robots"
-content="index, follow, max-image-preview:large"
+content={pageSEO.robots}
 />
 
 
 
 <meta
 name="author"
-content="MonkeyReach"
+content={pageSEO.author}
 />
 
 
 
 <meta
 name="theme-color"
-content="#050505"
+content={pageSEO.themeColor}
 />
 
 
@@ -244,28 +91,39 @@ content="Astro"
 
 
 
+
+
 <!-- Canonical -->
+
 
 <link
 rel="canonical"
-href={canonical}
+href={pageSEO.canonical}
 />
 
 
 
-<!-- Favicons -->
+
+
+<!-- Favicon -->
+
 
 <link
 rel="icon"
 type="image/webp"
-href={favicon}
+href="/logos/monkeyreach-site-icon.webp"
 />
+
 
 
 <link
 rel="apple-touch-icon"
-href={favicon}
+href="/logos/monkeyreach-site-icon.webp"
 />
+
+
+
+
 
 
 
@@ -275,67 +133,88 @@ href={favicon}
 
 <meta
 property="og:type"
-content="website"
+content={pageSEO.ogType}
 />
+
 
 
 <meta
 property="og:title"
-content={title}
+content={pageSEO.ogTitle}
 />
+
 
 
 <meta
 property="og:description"
-content={description}
+content={pageSEO.ogDescription}
 />
+
 
 
 <meta
 property="og:url"
-content={canonical}
+content={pageSEO.canonical}
 />
+
 
 
 <meta
 property="og:site_name"
-content="MonkeyReach"
+content={pageSEO.siteName}
 />
+
 
 
 <meta
 property="og:image"
-content={logo}
+content={pageSEO.ogImage}
+/>
+
+
+
+<meta
+property="og:locale"
+content={pageSEO.ogLocale}
 />
 
 
 
 
-<!-- Twitter -->
+
+
+
+<!-- Twitter Card -->
 
 
 <meta
 name="twitter:card"
-content="summary_large_image"
+content={pageSEO.twitterCard}
 />
+
 
 
 <meta
 name="twitter:title"
-content={title}
+content={pageSEO.twitterTitle}
 />
+
 
 
 <meta
 name="twitter:description"
-content={description}
+content={pageSEO.twitterDescription}
 />
+
 
 
 <meta
 name="twitter:image"
-content={logo}
+content={pageSEO.twitterImage}
 />
+
+
+
 
 
 
@@ -350,13 +229,19 @@ set:html={JSON.stringify(schema)}
 
 
 
+
+
 </head>
+
+
+
 
 
 <body>
 
 
 <Header />
+
 
 
 <main>
@@ -366,10 +251,13 @@ set:html={JSON.stringify(schema)}
 </main>
 
 
+
 <Footer />
 
 
+
 </body>
+
 
 
 </html>
