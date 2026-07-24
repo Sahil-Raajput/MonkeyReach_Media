@@ -1,7 +1,11 @@
 ---
 import "../styles/footer.css";
+
 import { URLS } from "../data/urls";
+import { ASSETS } from "../data/assets";
+import { SITE } from "../data/site";
 ---
+
 
 <footer class="footer">
 
@@ -17,7 +21,7 @@ import { URLS } from "../data/urls";
             >
 
                 <img 
-                    src={URLS.assets.logo}
+                    src={ASSETS.logo}
                     alt="MonkeyReach Digital Marketing Agency Logo"
                 />
 
@@ -97,9 +101,10 @@ import { URLS } from "../data/urls";
 
         <p class="footer-copy">
 
-            © {new Date().getFullYear()} {URLS.base.replace("https://","").replace("/","")} . All rights reserved.
+            © {new Date().getFullYear()} {SITE.name}. All rights reserved.
 
         </p>
+
 
 
 

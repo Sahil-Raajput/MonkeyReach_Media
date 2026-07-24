@@ -1,95 +1,136 @@
+// src/data/site.ts
+
 export const SITE = {
 
+    /* ==========================================================
+       COMPANY
+    ========================================================== */
 
-    name:
-    "MonkeyReach",
+    name: "MonkeyReach",
 
+    legalName: "MonkeyReach",
 
-    alternateName:
-    "MonkeyReach Media",
+    alternateName: "MonkeyReach Media",
 
+    businessType:
+        "Digital Marketing Agency",
 
-    url:
-    "https://monkeyreach.com",
-
-
-    logo:
-    "https://monkeyreach.com/logos/MonkeyReach-Logo.avif",
-
-
-    favicon:
-    "https://monkeyreach.com/logos/monkeyreach-site-icon.webp",
-
-
-
-    email:
-    "thesahilraajput@gmail.com",
-
-
-    phone:
-    "+91-9053556090",
-
-
-
-    language:
-    "en",
-
-
-    locale:
-    "en_US",
-
-
-    country:
-    "IN",
-
-
-    themeColor:
-    "#050505",
-
-
-
-    founder:
-    "Sahil Raajput",
-
-
+    tagline:
+        "Digital Marketing That Drives Business Growth",
 
     description:
-    "MonkeyReach Media helps businesses grow through SEO, Google Ads, Meta Ads, Social Media Marketing, Local SEO, Website Development and performance-driven digital marketing strategies.",
+        "MonkeyReach is a digital marketing agency helping businesses grow through SEO, Google Ads, social media marketing, and performance-driven digital strategies.",
 
 
 
+    /* ==========================================================
+       WEBSITE
+    ========================================================== */
 
-    address: {
+    url:
+        "https://monkeyreach.com",
 
-        street:
-        "Kishan Garh Road",
+    language:
+        "en",
+
+    locale:
+        "en_US",
+
+    charset:
+        "UTF-8",
+
+
+
+    /* ==========================================================
+       BRAND
+    ========================================================== */
+
+    themeColor:
+        "#ff4d00",
+
+
+
+    /* ==========================================================
+       ORGANIZATION
+    ========================================================== */
+
+    foundingDate:
+        "2025-06-08",
+
+
+    foundingLocation: {
 
         city:
-        "Kurukshetra",
+            "Kurukshetra",
 
         state:
-        "Haryana",
-
-        postalCode:
-        "136135",
+            "Haryana",
 
         country:
-        "IN"
+            "India",
+
+        countryCode:
+            "IN"
 
     },
 
 
 
+    /* ==========================================================
+       CONTACT
+    ========================================================== */
+
+    email:
+        "thesahilraajput@gmail.com",
+
+    contactType:
+        "Sales",
 
 
-    socialProfiles:[
 
-        "https://www.instagram.com/monkey_reach/",
+    /* ==========================================================
+       EXPERTISE
+    ========================================================== */
 
-        "https://www.linkedin.com/company/monkey-reach/",
+    knowsAbout: [
 
-        "https://www.threads.com/@monkey_reach/"
+        "Search Engine Optimization",
 
-    ]
+        "Technical SEO",
 
-};
+        "Local SEO",
+
+        "Google Ads",
+
+        "Google Analytics",
+
+        "Google Tag Manager",
+
+        "Social Media Marketing",
+
+        "Content Marketing",
+
+        "Performance Marketing",
+
+        "Conversion Rate Optimization",
+
+        "Lead Generation",
+
+        "Digital Marketing"
+
+    ],
+
+
+
+    /* ==========================================================
+       SEO DEFAULTS
+    ========================================================== */
+
+    robots:
+        "index, follow",
+
+    twitterCard:
+        "summary_large_image"
+
+
+} as const;

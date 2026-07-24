@@ -1,36 +1,35 @@
 ---
+// src/layouts/Layout.astro
+
+
 import Header from "../components/header.astro";
+
 import Footer from "../components/footer.astro";
 
 import "../styles/global.css";
 
-import { getSEO } from "../data/seo";
-import { getSchema } from "../data/schema";
-import { URLS } from "../data/urls";
-import { SITE } from "../data/site";
+
+import { ASSETS } from "../data/assets";
+
+
+import { createSchemaGraph } from "../schemas/entities";
+
 
 
 
 interface Props {
 
+
     title?: string;
+
 
     description?: string;
 
-    robots?: string;
-
-    canonical?: string;
-
-
-    schemaType?:
-        | "home"
-        | "about"
-        | "contact"
-        | "collection"
-        | "service"
-        | "webpage";
 
 }
+
+
+
 
 
 
@@ -38,81 +37,89 @@ const props = Astro.props;
 
 
 
-const defaultSEO =
-getSEO(Astro.url.pathname);
 
 
+const pageTitle =
 
-const pageSEO = {
-
-
-    ...defaultSEO,
-
-
-    title:
     props.title ??
-    defaultSEO.title ??
-    SITE.name,
+
+    "MonkeyReach | SEO & Digital Marketing Agency";
 
 
-    description:
+
+
+
+const pageDescription =
+
     props.description ??
-    defaultSEO.description ??
-    "",
 
-
-
-    robots:
-    props.robots ??
-    defaultSEO.robots ??
-    "index, follow",
-
-
-
-    canonical:
-    props.canonical ??
-    defaultSEO.canonical ??
-    Astro.url.href,
-
-
-
-    schema:
-    props.schemaType ??
-    defaultSEO.schema ??
-    "webpage"
-
-
-
-};
+    "MonkeyReach helps businesses grow through SEO, Google Ads, social media marketing and digital marketing strategies.";
 
 
 
 
 
-const schema =
-getSchema(
-    pageSEO.schema,
-    pageSEO
-);
+const canonical =
 
-
-
-const isNoIndex =
-pageSEO.robots.includes("noindex");
+    Astro.url.href;
 
 
 
 
 
 const ogImage =
-pageSEO.ogImage ??
-URLS.assets.logo;
+
+    ASSETS.ogImage;
+
+
 
 
 
 const twitterImage =
-pageSEO.twitterImage ??
-URLS.assets.logo;
+
+    ASSETS.ogImage;
+
+
+
+
+
+
+
+
+const schema = createSchemaGraph({
+
+
+    url:
+
+        canonical,
+
+
+
+    title:
+
+        pageTitle,
+
+
+
+    description:
+
+        pageDescription
+
+
+
+});
+
+
+
+
+
+
+console.log(
+
+    JSON.stringify(schema, null, 2)
+
+);
+
 
 ---
 
@@ -122,7 +129,11 @@ URLS.assets.logo;
 
 <!doctype html>
 
-<html lang={pageSEO.language ?? SITE.language}>
+
+<html lang="en">
+
+
+
 
 
 <head>
@@ -133,72 +144,42 @@ URLS.assets.logo;
 
 
 
+
+
 <meta
-name="viewport"
-content="width=device-width, initial-scale=1"
+
+    name="viewport"
+
+    content="width=device-width, initial-scale=1.0"
+
 />
+
+
+
 
 
 
 
 <title>
-{pageSEO.title}
+
+{pageTitle}
+
 </title>
 
 
 
 
-<meta
-name="description"
-content={pageSEO.description}
-/>
-
 
 
 
 <meta
-name="robots"
-content={pageSEO.robots}
+
+    name="description"
+
+    content={pageDescription}
+
 />
 
-
-
-
-<meta
-name="author"
-content={pageSEO.author ?? SITE.name}
-/>
-
-
-
-
-<meta
-name="theme-color"
-content={SITE.themeColor}
-/>
-
-
-
-
-<meta
-name="generator"
-content="Astro"
-/>
-
-
-
-
-
-
-{
-!isNoIndex &&
-
-<link
-rel="canonical"
-href={pageSEO.canonical}
-/>
-
-}
 
 
 
@@ -206,18 +187,42 @@ href={pageSEO.canonical}
 
 
 <link
-rel="icon"
-type="image/webp"
-href={URLS.assets.favicon}
+
+    rel="canonical"
+
+    href={canonical}
+
 />
 
 
 
 
-<link
-rel="apple-touch-icon"
-href={URLS.assets.favicon}
+
+
+
+<meta
+
+    name="robots"
+
+    content="index, follow"
+
 />
+
+
+
+
+
+
+
+<meta
+
+    name="generator"
+
+    content="Astro"
+
+/>
+
+
 
 
 
@@ -229,51 +234,14 @@ href={URLS.assets.favicon}
 
 
 
-<meta
-property="og:type"
-content={pageSEO.ogType ?? "website"}
-/>
-
 
 
 <meta
-property="og:title"
-content={pageSEO.ogTitle ?? pageSEO.title}
-/>
 
+    property="og:type"
 
+    content="website"
 
-<meta
-property="og:description"
-content={pageSEO.ogDescription ?? pageSEO.description}
-/>
-
-
-
-<meta
-property="og:url"
-content={pageSEO.canonical}
-/>
-
-
-
-<meta
-property="og:site_name"
-content={SITE.name}
-/>
-
-
-
-<meta
-property="og:image"
-content={ogImage}
-/>
-
-
-
-<meta
-property="og:locale"
-content={SITE.locale}
 />
 
 
@@ -282,50 +250,12 @@ content={SITE.locale}
 
 
 
-
-
-<!-- Twitter -->
-
-
-
 <meta
-name="twitter:card"
-content={pageSEO.twitterCard ?? "summary_large_image"}
-/>
 
+    property="og:title"
 
+    content={pageTitle}
 
-<meta
-name="twitter:title"
-content={pageSEO.twitterTitle ?? pageSEO.title}
-/>
-
-
-
-<meta
-name="twitter:description"
-content={pageSEO.twitterDescription ?? pageSEO.description}
-/>
-
-
-
-<meta
-name="twitter:image"
-content={twitterImage}
-/>
-
-
-
-<meta
-name="twitter:site"
-content="@monkey_reach"
-/>
-
-
-
-<meta
-name="twitter:creator"
-content="@monkey_reach"
 />
 
 
@@ -334,20 +264,141 @@ content="@monkey_reach"
 
 
 
-<!-- Schema -->
+<meta
+
+    property="og:description"
+
+    content={pageDescription}
+
+/>
 
 
-{
-!isNoIndex &&
+
+
+
+
+
+<meta
+
+    property="og:url"
+
+    content={canonical}
+
+/>
+
+
+
+
+
+
+
+<meta
+
+    property="og:image"
+
+    content={ogImage}
+
+/>
+
+
+
+
+
+
+
+<meta
+
+    property="og:locale"
+
+    content="en_US"
+
+/>
+
+
+
+
+
+
+
+
+
+<!-- Twitter Card -->
+
+
+
+
+
+<meta
+
+    name="twitter:card"
+
+    content="summary_large_image"
+
+/>
+
+
+
+
+
+
+
+<meta
+
+    name="twitter:title"
+
+    content={pageTitle}
+
+/>
+
+
+
+
+
+
+
+<meta
+
+    name="twitter:description"
+
+    content={pageDescription}
+
+/>
+
+
+
+
+
+
+
+<meta
+
+    name="twitter:image"
+
+    content={twitterImage}
+
+/>
+
+
+
+
+
+
+
+
+
+<!-- Schema.org JSON-LD -->
+
+
 
 <script
-type="application/ld+json"
-set:html={
-JSON.stringify(schema)
-}
+
+    type="application/ld+json"
+
+    set:html={JSON.stringify(schema)}
+
 />
 
-}
+
 
 
 
@@ -359,8 +410,11 @@ JSON.stringify(schema)
 
 
 
-<body>
 
+
+
+
+<body>
 
 
 <Header />
@@ -369,7 +423,7 @@ JSON.stringify(schema)
 
 <main>
 
-<slot />
+    <slot />
 
 </main>
 
@@ -380,6 +434,7 @@ JSON.stringify(schema)
 
 
 </body>
+
 
 
 </html>
