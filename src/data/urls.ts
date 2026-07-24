@@ -17,7 +17,7 @@ export const URLS = {
         `${SITE.url}/services/`,
 
         about:
-        `${SITE.url}/about-us/`,
+        `${SITE.url}/about/`,
 
         contact:
         `${SITE.url}/contact/`,
