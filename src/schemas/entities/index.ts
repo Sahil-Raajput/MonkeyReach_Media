@@ -22,10 +22,11 @@ import {
 } from "../entities/website";
 
 
-
 import {
     createWebPageSchema
 } from "../entities/webpage";
+
+
 
 
 
@@ -85,37 +86,16 @@ export function createSchemaGraph(
 
 
 
+
         "@graph": [
 
 
 
             /*
-             Global Entity
+             Current Page Entity
             */
 
-            ORGANIZATION_SCHEMA,
-
-
-
-            /*
-             Brand Assets
-            */
-
-            LogoSchema(),
-
-
-
-            FounderImageSchema(),
-
-
-
-
-
-            /*
-             Person Entity
-            */
-
-            PERSON_SCHEMA,
+            createWebPageSchema(data),
 
 
 
@@ -132,15 +112,37 @@ export function createSchemaGraph(
 
 
             /*
-             Current Page Entity
+             Global Entity
             */
 
-            createWebPageSchema(data)
+            ORGANIZATION_SCHEMA,
+
+
+
+
+
+            /*
+             Person Entity
+            */
+
+            PERSON_SCHEMA,
+
+
+
+
+
+            /*
+             Brand Assets
+            */
+
+            LogoSchema(),
+
+
+            FounderImageSchema()
 
 
 
         ]
-
 
 
     };
