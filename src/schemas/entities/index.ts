@@ -1,26 +1,21 @@
 // src/schemas/graph/index.ts
 
-
 import {
     LogoSchema,
     FounderImageSchema
 } from "../entities/image";
 
-
 import {
     ORGANIZATION_SCHEMA
 } from "../entities/organization";
-
 
 import {
     PERSON_SCHEMA
 } from "../entities/person";
 
-
 import {
     WEBSITE_SCHEMA
 } from "../entities/website";
-
 
 import {
     createWebPageSchema
@@ -31,18 +26,13 @@ import {
 
 
 
-
 interface SchemaGraphProps {
-
 
     url: string;
 
-
     title: string;
 
-
     description: string;
-
 
     type?:
         | "WebPage"
@@ -51,18 +41,14 @@ interface SchemaGraphProps {
         | "ContactPage";
 
 
-
     datePublished?:
         string;
-
 
 
     dateModified?:
         string;
 
-
 }
-
 
 
 
@@ -76,9 +62,7 @@ export function createSchemaGraph(
 
 ){
 
-
     return {
-
 
         "@context":
 
@@ -86,9 +70,7 @@ export function createSchemaGraph(
 
 
 
-
         "@graph": [
-
 
 
             /*
@@ -96,7 +78,6 @@ export function createSchemaGraph(
             */
 
             createWebPageSchema(data),
-
 
 
 
@@ -110,13 +91,11 @@ export function createSchemaGraph(
 
 
 
-
             /*
              Global Entity
             */
 
             ORGANIZATION_SCHEMA,
-
 
 
 
@@ -130,22 +109,18 @@ export function createSchemaGraph(
 
 
 
-
             /*
              Brand Assets
             */
 
             LogoSchema(),
 
-
             FounderImageSchema()
-
 
 
         ]
 
-
     };
 
-
 }
+

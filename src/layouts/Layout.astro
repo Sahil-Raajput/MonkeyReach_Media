@@ -12,8 +12,13 @@ import "../styles/global.css";
 import { ASSETS } from "../data/assets";
 
 
-import { createSchemaGraph } from "../schemas/entities";
+import { createOrganizationGraph } from "../schemas/graphs/organization";
 
+import { createPersonGraph } from "../schemas/graphs/person";
+
+import { createWebsiteGraph } from "../schemas/graphs/website";
+
+import { createWebPageGraph } from "../schemas/graphs/webpage";
 
 
 
@@ -86,13 +91,20 @@ const twitterImage =
 
 
 
-const schema = createSchemaGraph({
+const organizationSchema = createOrganizationGraph();
 
+
+const personSchema = createPersonGraph();
+
+
+const websiteSchema = createWebsiteGraph();
+
+
+const webpageSchema = createWebPageGraph({
 
     url:
 
         canonical,
-
 
 
     title:
@@ -100,12 +112,9 @@ const schema = createSchemaGraph({
         pageTitle,
 
 
-
     description:
 
         pageDescription
-
-
 
 });
 
@@ -114,11 +123,7 @@ const schema = createSchemaGraph({
 
 
 
-console.log(
 
-    JSON.stringify(schema, null, 2)
-
-);
 
 
 ---
@@ -394,7 +399,34 @@ console.log(
 
     type="application/ld+json"
 
-    set:html={JSON.stringify(schema)}
+    set:html={JSON.stringify(organizationSchema)}
+
+/>
+
+
+<script
+
+    type="application/ld+json"
+
+    set:html={JSON.stringify(personSchema)}
+
+/>
+
+
+<script
+
+    type="application/ld+json"
+
+    set:html={JSON.stringify(websiteSchema)}
+
+/>
+
+
+<script
+
+    type="application/ld+json"
+
+    set:html={JSON.stringify(webpageSchema)}
 
 />
 

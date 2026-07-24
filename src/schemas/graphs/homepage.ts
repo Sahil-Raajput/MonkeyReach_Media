@@ -11,33 +11,17 @@ import { createWebPageSchema } from "../entities/webpage";
 
 import { URLS } from "../../data/urls";
 
-import { SITE } from "../../data/site";
-
-
-
 
 
 
 
 interface HomepageSchemaProps {
 
+    title:string;
 
-    title:
-
-        string;
-
-
-
-    description:
-
-        string;
-
-
+    description:string;
 
 }
-
-
-
 
 
 
@@ -50,82 +34,40 @@ export function createHomepageSchema(
 ) {
 
 
-
     const homepage = createWebPageSchema({
 
 
-
         type:
-
             "WebPage",
 
 
-
         url:
-
             URLS.pages.home,
 
 
-
         title:
-
             data.title,
 
 
-
         description:
-
             data.description
-
 
 
     });
 
 
 
+    return [
 
+        ORGANIZATION_SCHEMA,
 
+        PERSON_SCHEMA,
 
+        WEBSITE_SCHEMA,
 
-    return {
+        homepage
 
-
-
-        "@context":
-
-            "https://schema.org",
-
-
-
-
-
-
-        "@graph": [
-
-
-
-            ORGANIZATION_SCHEMA,
-
-
-
-            PERSON_SCHEMA,
-
-
-
-            WEBSITE_SCHEMA,
-
-
-
-            homepage
-
-
-
-        ]
-
-
-
-    };
-
+    ];
 
 
 }
